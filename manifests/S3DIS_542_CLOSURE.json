@@ -4,12 +4,12 @@
  "status": "CLOSED",
  "conclusion": "542 is the actual frozen TEST split; 544 is the nominal 68 rooms x 8 queries/room.",
  "receipt": {
-  "path": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\reports\\S3DIS_DENOMINATOR_542_544.json",
-  "zh": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\reports\\S3DIS_DENOMINATOR_542_544_ZH.md",
-  "duplicate": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\C\\records\\S3DIS_DENOMINATOR_542_544.json"
+  "path": "<SCAR_ROOT>\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\reports\\S3DIS_DENOMINATOR_542_544.json",
+  "zh": "<SCAR_ROOT>\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\reports\\S3DIS_DENOMINATOR_542_544_ZH.md",
+  "duplicate": "<SCAR_ROOT>\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\C\\records\\S3DIS_DENOMINATOR_542_544.json"
  },
  "dataset_manifest": {
-  "path": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\baseline_recovery_20261102\\C_corrected_domains\\s3dis\\val_inputs\\dataset_manifest.json",
+  "path": "<SCAR_ROOT>\\baseline_recovery_20261102\\C_corrected_domains\\s3dis\\val_inputs\\dataset_manifest.json",
   "sha256": "41e00444edf66f72f9e44508c2071e6dd087c0edb7c4a58c0df4b07c59267b15",
   "name": "S3DISPose-50-25-25"
  },

@@ -59,11 +59,36 @@ SHA256SUMS               本包内全部文件（除自身）的 SHA256
 `WEIGHT_INDEX.csv` 分两档：
 
 - `tier=SELECTED`：论文复现所需的最小集合，74 个文件、489,060,515 B（约 466 MiB）。
-  25 个头、25 份配置、20 份归一化，外加修正版 Des4Pos 的 2 个 coarse + 2 个 fine。
+  25 个头、25 份配置、20 份归一化，外加 MambaPlace×KITTI 与 MambaPlace×PandaSet 的
+  2 个 coarse + 2 个 fine 主干权重。
 - `tier=FULL_ONLY`：只出现在全量备份里的逐轮权重、resume、主干全量。
 
-权重不随仓库分发，因此 `path` 列是**占位路径**（`<SCAR_ROOT>` 等），不是可下载 URL。
-拿到权重后按 `RESTORE.md` 的相对布局放置，并用 `sha256sum` 对照 `sha256` 列。
+`tier=SELECTED` 已上传到 Hugging Face **私有**模型仓库：
+
+| 字段 | 值 |
+|---|---|
+| 仓库 | `Promexile/scar-weights`（private，需获授权访问） |
+| 提交版本 | `e7e3e1cfbc391b8a91513680ed8a50bf8bed051e` |
+| 远程文件 | 74 个（另含仓库自动生成的 `.gitattributes`） |
+| 远程布局 | `selected/<cell_id>/<role>/<basename>` |
+| 校验结果 | 74/74 通过；29 个 LFS 文件按 `lfs.oid`（SHA256）核对，45 个小文件下载后重算 SHA256 |
+| 逐文件明细 | `manifests/HF_SELECTED_WEIGHTS.csv`、`manifests/HF_REMOTE_VERIFICATION.json` |
+
+下载（把 `e7e3e1cfbc39` 替换为完整提交号可锁定版本）：
+
+```bash
+pip install huggingface_hub
+hf auth login                     # 使用有该私有仓库权限的账号
+hf download Promexile/scar-weights --repo-type model --revision e7e3e1cfbc391b8a91513680ed8a50bf8bed051e --local-dir scar_weights
+```
+
+`WEIGHT_INDEX.csv` 中 SELECTED 行同时给出：
+
+- `hf_repo` / `hf_path` / `hf_revision` / `hf_verified` —— 可直接下载的远程位置与核验状态；
+- `path` —— 恢复时的**本地目标路径**（`<SCAR_ROOT>` 等占位符），下载后按
+  `RESTORE.md` 的对应关系放置。
+
+`tier=FULL_ONLY` 不在 HF，`path` 列是占位路径，来自云端全量备份。
 
 全量备份的体量（`manifests/CLOUD_BACKUP_MEASUREMENT.json`）：原始 57,091,762,928 B
 （53.17 GiB），扣除与五机归档重复的

@@ -1,0 +1,66 @@
+{
+ "note": "MP formal SCAR head verification against freeze/verify receipts",
+ "cells": {
+  "MP_KITTI": {
+   "head_local": "<SCAR_ROOT>\\FORMAL_SCAR_20261103_MP_KITTI\\heads\\selected\\ht23_mp_formal_s0.pt",
+   "receipt_files": [
+    "FORMAL_SCAR_20261103_MP_KITTI/verify/SELECTED_HEADS.json",
+    "FORMAL_SCAR_20261103_MP_KITTI/verify/VERIFY.json",
+    "FORMAL_SCAR_20261103_MP_KITTI/SHA256SUMS"
+   ],
+   "head_bytes": 29804,
+   "sha256_actual": "dc153c956a3166321dcbe469e4470b06e9de1e71c462d07a528d368c4a19eaac",
+   "sha256_receipt": [
+    {
+     "receipt": "FORMAL_SCAR_20261103_MP_KITTI/verify/SELECTED_HEADS.json",
+     "sha256": "dc153c956a3166321dcbe469e4470b06e9de1e71c462d07a528d368c4a19eaac"
+    }
+   ],
+   "verdict": "MATCH",
+   "verify_status": "PASS",
+   "verify_checks": 1378,
+   "verify_fail": 0,
+   "verify_kitti_summary": {
+    "run_id": "FORMAL_SCAR_20261103_MP_KITTI",
+    "n_checks": 754,
+    "n_pass": 754,
+    "n_fail": 0,
+    "n_per_epoch_ckpts": 90,
+    "reload_max_abs_delta": 0.0,
+    "test_caches_opened": false
+   }
+  },
+  "MP_PANDA": {
+   "head_local": "<SCAR_ROOT>\\FORMAL_SCAR_20261102\\mambaplace_pandaset\\heads\\ht23_mp_formal_s0.pt",
+   "receipt_files": [
+    "FORMAL_SCAR_20261102/mambaplace_pandaset/records/FREEZE_FORMAL_SCAR_MP_PANDASET.json",
+    "FORMAL_SCAR_20261102/mambaplace_pandaset/logs/verify_formal.json"
+   ],
+   "head_bytes": 27884,
+   "sha256_actual": "530ea6e05f85107b24137f117491789b770497cce1ab42c5cc2c7ea297bf68e7",
+   "sha256_receipt": [
+    {
+     "receipt": "FORMAL_SCAR_20261102/mambaplace_pandaset/records/FREEZE_FORMAL_SCAR_MP_PANDASET.json",
+     "sha256": "530ea6e05f85107b24137f117491789b770497cce1ab42c5cc2c7ea297bf68e7"
+    },
+    {
+     "receipt": "FORMAL_SCAR_20261102/mambaplace_pandaset/logs/verify_formal.json",
+     "sha256": "530ea6e05f85107b24137f117491789b770497cce1ab42c5cc2c7ea297bf68e7"
+    }
+   ],
+   "verdict": "MATCH",
+   "verify_status": "PASS",
+   "verify_checks": 1378,
+   "verify_fail": 0,
+   "verify_kitti_summary": {
+    "run_id": "FORMAL_SCAR_20261103_MP_KITTI",
+    "n_checks": 754,
+    "n_pass": 754,
+    "n_fail": 0,
+    "n_per_epoch_ckpts": 90,
+    "reload_max_abs_delta": 0.0,
+    "test_caches_opened": false
+   }
+  }
+ }
+}

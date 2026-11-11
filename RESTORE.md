@@ -15,17 +15,30 @@ git clone <本仓库> scar-release
 export PYTHONPATH="$PWD/scar-release/scar/core:$PYTHONPATH"   # 按需追加 vendor 目录
 ```
 
-## 2. 放置权重
+## 2. 下载并放置权重
 
-按 `WEIGHT_INDEX.csv` 下载 `tier=SELECTED` 的行，放到：
+`tier=SELECTED` 的 74 个文件在 Hugging Face 私有模型仓库
+`Promexile/scar-weights`，提交版本 `e7e3e1cfbc391b8a91513680ed8a50bf8bed051e`：
 
+```bash
+pip install huggingface_hub
+hf auth login
+hf download Promexile/scar-weights --repo-type model --revision e7e3e1cfbc391b8a91513680ed8a50bf8bed051e --local-dir scar_weights
 ```
-<SCAR_ROOT>/SCAR_WEIGHTS_BACKUP_20261101/repo/weights/<cell_id>/<文件名>   # 历史线
-<SCAR_ROOT>/D4P_CORRECTED_...                                               # 修正版线
-```
 
-具体目标路径就是 `path` 列去掉 `<SCAR_ROOT>` 前缀后的部分。逐轮权重与主干全量在
-`tier=FULL_ONLY`，来自云端全量备份。
+远程布局是 `selected/<cell_id>/<role>/<basename>`。`WEIGHT_INDEX.csv` 的每一行给出：
+
+| 列 | 含义 |
+|---|---|
+| `hf_path` | 远程相对路径，例如 `selected/T2L_KITTI/scar_head/headB__newB_ht23_t2l_s0.pt` |
+| `path` | 恢复时的本地目标路径（`<SCAR_ROOT>` 等占位符） |
+| `sha256` | 文件字节 SHA256，放置后用 `sha256sum` 复核 |
+| `hf_verified` | 上传后回读核验结果（全部为 `MATCH`） |
+
+历史线头/配置/归一化的本地目标在
+`<SCAR_ROOT>/SCAR_WEIGHTS_BACKUP_20261101/repo/{weights,configs,normalization}/<cell_id>/`
+下；修正版 Des4Pos 的 coarse/fine 按其 `path` 列自带的目录放置。逐轮权重与主干全量在
+`tier=FULL_ONLY`，来自云端全量备份，不在 HF 的 SELECTED 集合里。
 
 ## 3. 校验
 
