@@ -1,0 +1,117 @@
+{
+  "package_id": "Text2Loc-SCAR-HT/NPM3DPose-20-10/bb0/frozen",
+  "created": "2026-10-27",
+  "stages": {
+    "coarse": {
+      "status": "SELECTED",
+      "epoch": 19,
+      "selection": {
+        "rule": "max VAL cell R@5; exact ties -> earliest epoch",
+        "metric": 0.6875,
+        "epoch": 19,
+        "checkpoint": "<REMOTE_PATH>"
+      },
+      "epoch_source": "registry_selection",
+      "source": "C/text2loc_npm3d/runs/seed0/FREEZE.json",
+      "checkpoint": "<REMOTE_PATH>",
+      "applicable": true
+    },
+    "fine": {
+      "status": "SELECTED",
+      "epoch": 33,
+      "selection": {
+        "rule": "min VAL mean pose-offset; exact ties -> earliest epoch",
+        "metric": 0.1455041915178299,
+        "epoch": 33,
+        "checkpoint": "<REMOTE_PATH>"
+      },
+      "epoch_source": "registry_selection",
+      "source": "C/text2loc_npm3d/runs/seed0/FREEZE.json",
+      "checkpoint": "<REMOTE_PATH>",
+      "applicable": true
+    }
+  },
+  "heads": [
+    {
+      "head_seed": 0,
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "33fb6bded9d769389ab54f9a22c65322b48c66b9465983db791e755c743bf4c8",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1 -> tie max VAL Top-1@5m -> tie earliest epoch",
+        "epoch": 24,
+        "key": [
+          0.28125,
+          0.1875
+        ],
+        "val_cell": {
+          "R@1": 0.28125,
+          "R@2": 0.421875,
+          "R@3": 0.5703125,
+          "R@5": 0.75,
+          "R@10": 0.96875,
+          "R@25": 1.0
+        },
+        "val_loc": {
+          "top1@5m": 0.1875,
+          "top5@5m": 0.59375,
+          "top10@5m": 0.765625
+        }
+      }
+    },
+    {
+      "head_seed": 1,
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "14f6063e920b9c18b92d8d9775457e20280145c9230824ce8a381cd36ce51785",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1 -> tie max VAL Top-1@5m -> tie earliest epoch",
+        "epoch": 4,
+        "key": [
+          0.2734375,
+          0.1796875
+        ],
+        "val_cell": {
+          "R@1": 0.2734375,
+          "R@2": 0.4453125,
+          "R@3": 0.5703125,
+          "R@5": 0.765625,
+          "R@10": 0.953125,
+          "R@25": 1.0
+        },
+        "val_loc": {
+          "top1@5m": 0.1796875,
+          "top5@5m": 0.6015625,
+          "top10@5m": 0.7578125
+        }
+      }
+    },
+    {
+      "head_seed": 2,
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "bd7634f4998d52fb4c291e284bba43855137ada1ac21ac470a50034a204bd653",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1 -> tie max VAL Top-1@5m -> tie earliest epoch",
+        "epoch": 8,
+        "key": [
+          0.28125,
+          0.1875
+        ],
+        "val_cell": {
+          "R@1": 0.28125,
+          "R@2": 0.4296875,
+          "R@3": 0.546875,
+          "R@5": 0.7734375,
+          "R@10": 0.953125,
+          "R@25": 1.0
+        },
+        "val_loc": {
+          "top1@5m": 0.1875,
+          "top5@5m": 0.609375,
+          "top10@5m": 0.7578125
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "counts_sha256": null,
+  "domain": "kitti360pose",
+  "fitted_before_fixedpoints": true,
+  "max_count": null,
+  "mean": 1826.6844940968194,
+  "min_count": null,
+  "n_excluded": null,
+  "n_objects": null,
+  "n_seen": null,
+  "pinned_zero_variance": false,
+  "provenance": "official_constants",
+  "source": "nuozimiaowu/Des4Pos models/object_encoder.py (public KITTI360Pose recipe) hard-coded num_mean/num_std; registered unchanged for the KITTI reference run - not re-fitted on VAL/TEST",
+  "split": "train",
+  "std": 2516.8905096993817,
+  "std_ddof": 0,
+  "version": 1
+}

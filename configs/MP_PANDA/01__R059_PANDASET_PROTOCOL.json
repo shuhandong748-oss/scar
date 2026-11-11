@@ -1,0 +1,241 @@
+{
+  "id": "R059-PANDASET",
+  "submission": "C / MambaPlace x PandaSet bb0 (domain adaptation of R059-CORE-v1)",
+  "registered_at": "2026-10-27T23:40:00+08:00",
+  "registered_before": "any formal training step; probe results are appended to probe/probe_{coarse,fine}.json, not used to change this file",
+  "machine": {
+    "endpoint": "<REMOTE_HOST>",
+    "hostname_recorded_at_first_report": "<REMOTE_HOST>-container (<REMOTE_HOST>)",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER 32 GB",
+    "workdir": "<REMOTE_PATH>"
+  },
+  "method": {
+    "inherited_release": "R059-CORE-v1 (E)",
+    "repo": "https://github.com/CV4RA/MambaPlace.git",
+    "commit": "f852d9c11eb312fb801b4109f099af0a3aed7f11",
+    "paper": "arXiv 2408.15740",
+    "compat": "release/patch_compat.diff applied on top of the commit (COMPAT_001/002/003)",
+    "code_manifest": "meta/CODE_SHA256.txt",
+    "code_manifest_sha256": "789988fe124d065f6d0c49bdc812a57c90fceb5db97603548f07027de58d6c01",
+    "verified_on_C": "35/35 OK after git apply of patch_compat.diff; no controlled file edited by C"
+  },
+  "domain_adaptation": {
+    "registry": "adapt/REGISTRATION.md",
+    "mechanism": "adapt/shim/sitecustomize.py MetaPathFinder alias, active only when MP_DOMAIN=pandaset",
+    "aliased_modules": [
+      "datapreparation.kitti360pose.utils -> datapreparation.pandasatpose.utils",
+      "dataloading.kitti360pose.base -> dataloading.pandasatpose.base",
+      "dataloading.kitti360pose.utils -> dataloading.pandasatpose.utils",
+      "dataloading.kitti360pose.cells -> dataloading.pandasatpose.cells",
+      "dataloading.kitti360pose.poses -> dataloading.pandasatpose.poses",
+      "dataloading.kitti360pose.eval -> dataloading.pandasatpose.eval"
+    ],
+    "not_aliased": [
+      "datapreparation.kitti360pose.imports (pickle classes; must stay the frozen module)"
+    ],
+    "twins_are_byte_identical_copies_of_upstream": true,
+    "twin_sha256": {
+      "dataloading/pandasatpose/base.py": "99f35b020ad0a8c7f004a3318ffea34431c63a6bc582458ec5e85e1129261c0f",
+      "dataloading/pandasatpose/utils.py": "035c9dd93c3562616c904cae6b59c13f5b374851ff3519a8385cb07ff99f7899",
+      "dataloading/pandasatpose/cells.py": "65302eb0799cedb250727768def66fe3ceaa9710700dee4f8ccba1860e351ba1",
+      "dataloading/pandasatpose/poses.py": "ff0abb1dc840b1acee0a1594fdb548a5cf93e77bb55969fd7bf8c9d6c4235136",
+      "dataloading/pandasatpose/eval.py": "d4bc58f91b2ba21f7c4d617b734f656a781bdc3fac335cc11224125eb35dd838"
+    },
+    "only_domain_constants_module": "datapreparation/pandasatpose/utils.py",
+    "class_vocabulary": [
+      "animal",
+      "barrier",
+      "bicycle",
+      "bus",
+      "car",
+      "construction",
+      "motorcycle",
+      "pedestrian",
+      "pushable pullable",
+      "sign",
+      "trafficcone",
+      "trailer",
+      "train",
+      "truck",
+      "vehicle"
+    ],
+    "n_classes": 16,
+    "colors": "unchanged upstream 8-colour palette; all release colours verified inside it",
+    "hint_template": "The pose is {direction} of a {color} {label}.",
+    "deviations": [
+      {
+        "id": "D-SHIM",
+        "what": "frozen literal imports resolved by a MetaPathFinder instead of editing training/evaluation files",
+        "why": "editing them breaks meta/CODE_SHA256.txt (35 controlled files)",
+        "affects_math": false
+      },
+      {
+        "id": "D-PN",
+        "what": "derived PointNet checkpoint assets/pointnet_pandaset_c16_8.pth: class_classifier 22->16 re-initialised, other 62 tensors bit-identical",
+        "why": "models/object_encoder.py load_state_dict is strict and the frozen KITTI checkpoint has a 22-class head; PandaSet vocabulary is 15 real classes + the pad slot = 16",
+        "evidence_unused": "class_pred is produced at models/pointcloud/pointnet2.py:95 and never consumed (object_encoder.py:92 uses .features2 only)",
+        "src_sha256": "ef63fdfc9cd10e698181efe415a873e628cf86698266f005351943030016e8e1",
+        "dst_sha256": "e4e24ec93458ae7a144083aa6108da85785af7021209742f31739bc43dc7fbbd",
+        "revisitable": "yes, if E's S3DIS bb0 shows cross-domain PointNet needs retraining"
+      },
+      {
+        "id": "D-PAD",
+        "what": "class table gains the synthetic 'pad' slot required by Object3d.create_padding(); vocabulary 15 -> 16 slots, pad placed last exactly like upstream KITTI",
+        "why": "frozen dataloading/pandasatpose/poses.py:155 does CLASS_TO_INDEX[obj.label] and the frozen fine datasets pad every cell to pad_size=16 objects; without a pad entry the code raises KeyError: 'pad'",
+        "found_by": "fine 5-step probe (coarse probe passed because coarse datasets do not pad)",
+        "affects_real_class_indices": false,
+        "affects_math": "only the width of the unused PointNet class head; real class indices 0..14 unchanged"
+      }
+    ],
+    "n_real_classes": 15,
+    "pad_slot": "CLASS_TO_INDEX['pad']=PAD_INDEX=15 (Object3d.create_padding label 'pad'; frozen fine datasets pad cells to pad_size=16). Upstream KITTI has the same slot at index 21 of 22."
+  },
+  "dataset": {
+    "name": "PandaSetPose-50-25-25",
+    "base_path": "<REMOTE_PATH>",
+    "dataset_name_derived_by_upstream": "PandaSetPose-50-25-25",
+    "manifest_sha256": "04fbea46bbbc82a035378fbb891944361641f03a355fed4954fb7fa704e7a494",
+    "splits": {
+      "TRAIN": {
+        "n_scenes": 50,
+        "n_cells": 380,
+        "n_poses": 4000
+      },
+      "VAL": {
+        "n_scenes": 25,
+        "n_cells": 199,
+        "n_poses": 2000
+      },
+      "TEST": {
+        "n_scenes": 25,
+        "n_cells": 200,
+        "n_poses": 2000
+      }
+    },
+    "verified_facts": {
+      "descriptions_per_pose": 6,
+      "unmatched_descriptions": 0,
+      "cells_square_30m": "779/779",
+      "fine_label_vs_pose_pose_max_abs": 6e-08,
+      "direction_files": "100/100 scenes, PMC-shaped",
+      "scene_id_parse": "cell.id.split('_')[0]"
+    }
+  },
+  "assets": {
+    "pointnet": {
+      "path": "assets/pointnet_pandaset_c16_8.pth",
+      "sha256": "e4e24ec93458ae7a144083aa6108da85785af7021209742f31739bc43dc7fbbd",
+      "report": "assets/pointnet_pandaset_c16_8.json"
+    },
+    "text_backbone": {
+      "path": "<REMOTE_PATH>",
+      "note": "local directory path substitution only; weights unchanged"
+    }
+  },
+  "env": {
+    "prefix": "env/conda_mambaplace",
+    "python": "env/conda_mambaplace/bin/python",
+    "pins": "env/requirements_lock.txt (81 lines, copied from R059-CORE-v1)",
+    "build_script": "spec/build_env_c.sh",
+    "build_log": "env/build_c.log",
+    "verify_script": "env/verify_env_c.py (path-only adaptation of env/verify_env.py)",
+    "verify_log": "env/verify_c.log"
+  },
+  "commands": {
+    "guard": "adapt/run/guard.sh <coarse|fine>",
+    "coarse": "bash adapt/run/coarse_bb0.sh",
+    "fine": "bash adapt/run/fine_bb0.sh",
+    "coarse_args": "epochs 20, batch 64, coarse_embed_dim 256, lr 5e-4, step scheduler (7, 0.4), temperature 0.1, contrastive, shuffle, no_pc_augment, fixed_embedding",
+    "fine_args": "epochs 35, batch 32, fine_embed_dim 128, lr 3e-4, regressor_cell all, pmc_prob 0.5, shuffle, no_pc_augment, fixed_embedding",
+    "env_vars": {
+      "MP_SEED": 0,
+      "MP_NO_TEST": 1,
+      "MP_DOMAIN": "pandaset"
+    },
+    "pythonpath": "adapt/shim"
+  },
+  "task_keys": {
+    "coarse": "R059_MP_PANDASET_bb0_coarse_v1",
+    "fine": "R059_MP_PANDASET_bb0_fine_v1"
+  },
+  "selection": {
+    "coarse": "VAL best-cell R@5 = val_acc[max(args.top_k)], strict improvement, earliest epoch",
+    "fine": "min mean VAL pose offset (calc_pose_error2 in unit-cell coords), strict improvement, earliest epoch",
+    "test": "not constructed during training (MP_NO_TEST=1); a single evaluation per registered chain after freeze"
+  },
+  "probes": {
+    "status": "BOTH PASS (gate_pass=true)",
+    "coarse": {
+      "file": "probe/probe_coarse.json",
+      "steps": 5,
+      "scenes": [
+        "p000"
+      ],
+      "n_classes": 16,
+      "n_params": 366915480,
+      "params_with_grad": "115/370",
+      "relative_delta": 6.370490746651533e-05,
+      "reload_max_abs_output_diff": 0.0,
+      "missing_keys_excluding_llm": 0,
+      "unexpected_keys": 0,
+      "decode": "official_matches_manual=true on the VAL pose farthest from its cell centre (25.498 m), discriminating=true",
+      "peak_gpu_mem_gb": 4.838
+    },
+    "fine": {
+      "file": "probe/probe_fine.json",
+      "steps": 5,
+      "scenes": [
+        "p000"
+      ],
+      "n_classes": 16,
+      "n_params": 363838634,
+      "params_with_grad": "171/396",
+      "relative_delta": 1.2622409656243713e-06,
+      "reload_max_abs_output_diff": 0.0,
+      "missing_keys_excluding_llm": 0,
+      "unexpected_keys": 0,
+      "decode": "label_vs_pose.pose max abs 2.8e-08; world decode max abs 8.5e-07 m",
+      "pmc_relocation_in_first_80_samples": 0,
+      "peak_gpu_mem_gb": 4.932
+    },
+    "env": "ENV_OK 13/13 (env/env_report_c.json); PyG FixedPoints(256) applied to the release's 100 points/object yields 256 rows of which 91-94 are distinct (upsampling with replacement, upstream behaviour, documented domain limitation)",
+    "note": "probe results are appended here and in probe/*.json; they were NOT used to alter any hyperparameter",
+    "pmc_measurement": {
+      "script": "adapt/scripts/check_pmc_maps.py --split TRAIN --max-poses 4000 --strict-accept",
+      "result_file": "probe/pmc_map_check_train.json",
+      "poses_checked": 4000,
+      "n_dangling_neighbour_ids": 0,
+      "n_pose_cells_missing_from_direction_map": 0,
+      "poses_with_valid_neighbour_id": 3635,
+      "poses_with_matchable_neighbour_ignoring_distance_gate": 549,
+      "poses_passing_distance_gate_and_match": 519,
+      "pose_availability_rate": 0.12975,
+      "expected_relocation_rate_at_pmc_prob_0.5": 0.064875,
+      "scenes_with_zero_available_poses": "27 of 50 TRAIN scenes (probe scene p000 = 0/80)",
+      "interpretation": "PMC is a sparse, per-scene augmentation on PandaSet: ~6.5% expected relocation, not the ~50% the recipe implies. Data-layout fact, not an implementation defect; pmc_prob/threshold left at the frozen recipe values.",
+      "note": "an earlier bounded sample (8 poses/scene) gave 17.25% / 8.6%; the exhaustive run supersedes it"
+    }
+  },
+  "downstream_chain": [
+    "own TRAIN/VAL coarse retrieval Top25 + own fine",
+    "canonical23",
+    "TRAIN-only effective-list normalisation",
+    "3 SCAR heads seed 0/1/2, main head fixed to 0, head selection by the existing main-table contract",
+    "freeze all heads",
+    "one TEST evaluation",
+    "original ordering / strong-control / SCAR pairing in the same pool with the same fine offsets",
+    "independent verification (candidate uniqueness, coverage, per-query recomputation)"
+  ],
+  "out_of_scope": [
+    "FourierPlace / Text2Pos",
+    "extra backbone seeds (bb1/bb2) without explicit dispatch",
+    "third-line algorithm changes",
+    "Des4Pos x PandaSet (A)",
+    "MambaPlace x nuScenes (D)"
+  ],
+  "clearance_basis": {
+    "file": "meta/SCHEDULER_C_PANDASET_CLEARANCE",
+    "basis": "explicit batch dispatch of MambaPlace x PandaSet bb0 to C; E's R059_PROTOCOL.json scope.excluded contains 'PandaSet (C)'; A's PandaSet task is Des4Pos x PandaSet, not MambaPlace",
+    "written_by": "C executor on the recorded dispatch, not a human scheduler signature"
+  }
+}

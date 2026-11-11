@@ -1,0 +1,14 @@
+# weights / data / caches never belong in this repo
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.tar
+*.tar.gz
+*.zip
+__pycache__/
+*.pyc
+.venv/
+.env
+data/

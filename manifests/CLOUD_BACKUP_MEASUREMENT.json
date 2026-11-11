@@ -1,0 +1,25 @@
+{
+ "selected_tier": {
+  "bytes": 489060515,
+  "files": 74
+ },
+ "full_backup_raw_bytes": 57091762928,
+ "full_backup_raw_gib": 53.171,
+ "duplicate_with_FB11_bytes": 51387683,
+ "duplicate_by_entry": {
+  "FB-02": 44814583,
+  "FB-03": 417303,
+  "FB-04": 1932002,
+  "FB-05": 0,
+  "FB-06": 4112077,
+  "FB-07": 30619,
+  "FB-08": 30619,
+  "FB-09": 30880,
+  "FB-10": 19600
+ },
+ "fb01_vcs_internals_bytes": 4449196325,
+ "fb04_internal_tars_bytes": 2158428160,
+ "net_upload_bytes": 52591178920,
+ "net_upload_gib": 48.979,
+ "method": "逐文件 (basename, size) 与 FB-11 归档索引比对；FB-01 的 .git 内部对象不计入上传，但 FB-04 内部 tar 保留（它是自包含交付件，与同名目录重复）"
+}

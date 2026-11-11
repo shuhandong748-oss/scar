@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2L_NUSC",
+  "method": "Text2Loc",
+  "dataset": "NUSC",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "SCAR-B 台账",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_NUSC/coarse__coarse.pth",
+      "sha256": "74e804ab089c9448c74c29ed90d8f0dbf07336e77f32f09a483d047041e55d5f",
+      "bytes": 66294441,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_NUSC/fine__fine.pth",
+      "sha256": "c89f33001f941c28da7d17af2e2951fdd62efbc41fd01961a3d2ecaa78ea5860",
+      "bytes": 61635931,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_NUSC/headAB__epoch23.pt",
+      "sha256": "ce6fb327047edeb8dd96cc188925dcb0e33bd7d3271ae660bd47ddf3ef9cfa9d",
+      "bytes": 17352,
+      "selected_epoch": "23",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/T2L_NUSC/headAB__epoch23.pt",
+      "sha256": "ce6fb327047edeb8dd96cc188925dcb0e33bd7d3271ae660bd47ddf3ef9cfa9d",
+      "bytes": 17352,
+      "selected_epoch": "23",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2L_NUSC",
+    "method": "Text2Loc",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/T2L_NUSC/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/Text2Loc__nuScenesPose-50-25-25_30-10_FULL__bb0__a_recovered_20261027/NORMALIZATION.json",
+    "source_sha256": "2e1afc05eb3611a9204183ccd3a65dd163473405bde08f56dec53dbda51165bf",
+    "archive_sha256": "c7bbb439738cdd9954406896c1998640a3645b860552df126f70819e313d0c75",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "台账A/B=ce6fb327(ep23)，本地包内另有 head_seed0=7b48d6cf；两个版本均在本地，本表按台账主头。"
+}

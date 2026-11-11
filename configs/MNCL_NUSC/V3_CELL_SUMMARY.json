@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MNCL_NUSC",
+  "method": "MNCL",
+  "dataset": "NUSC",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "历史单测头 A=B（epNone）",
+  "b_state": "MISSING_UNPROVEN",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_NUSC/coarse__coarse.pth",
+      "sha256": "9d3376083625e30f792ed0ebb283ded81418ff4d5e920b95dd6ddc3da64e9a9b",
+      "bytes": 213672660,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_NUSC/fine__fine.pth",
+      "sha256": "41a49c87bdc9e935a7c785b3952c25fb9a73373c337d97f768d41754d2e82430",
+      "bytes": 186551034,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_NUSC/headA__head_seed0_ht23.pt",
+      "sha256": "59f7397789c98d61f235b13bc92c6220e25f6bda5fee87774cdb3de2e0c5fab5",
+      "bytes": 20360,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "MISSING_UNPROVEN",
+      "archive_path": "",
+      "sha256": "",
+      "bytes": "",
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MNCL_NUSC",
+    "method": "MNCL",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/MNCL_NUSC/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/MNCL-SCAR-HT__nuScenesPose-50-25-25_30-10_FULL__bb0__frozen_20261027/NORMALIZATION.json",
+    "source_sha256": "1e64f91444aa63adb0fa5e79e9711cff78ddd3f3b24138cabf6e5c4619ee3f79",
+    "archive_sha256": "3ec8232c9475488ccf5bd1899756faefe04970cdc59f2a7e079159c622f3c4f9",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "SCAR-B 台账 A_sha 实为 eval_val/metrics.json；真实头为包内59f73977（A=B）。"
+}

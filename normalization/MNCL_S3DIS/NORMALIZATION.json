@@ -1,0 +1,526 @@
+{
+  "package_id": "MNCL-SCAR-HT/S3DISPose-50-25-25/bb0/frozen",
+  "created": "2026-10-27",
+  "inference": "(feats - mean) / std per column, then MLP 23->64->32->1 (ReLU, no output activation)",
+  "pinned_rule": "columns with TRAIN std < 1e-3 pinned to std=1.0",
+  "heads": [
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "S3DISPose-50-25-25",
+      "backbone_seed": 0,
+      "head_seed": 0,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20360,
+      "mean": [
+        0.6733871102333069,
+        0.5,
+        0.700832188129425,
+        0.5,
+        0.5,
+        0.28965893387794495,
+        0.28965893387794495,
+        0.0966712161898613,
+        0.5,
+        -0.033975668251514435,
+        -0.09475173056125641,
+        0.19688375294208527,
+        0.110313780605793,
+        0.110313780605793,
+        0.5,
+        0.5,
+        0.5,
+        0.911905825138092,
+        0.667789876461029,
+        2.4388744831085205,
+        2.4482228755950928,
+        0.825424313545227,
+        0.831127941608429
+      ],
+      "std": [
+        0.08316431939601898,
+        0.30046260356903076,
+        0.2531735599040985,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.4536041021347046,
+        0.2254636436700821,
+        0.21946504712104797,
+        0.30046260356903076,
+        0.13448306918144226,
+        0.13710184395313263,
+        0.09083851426839828,
+        0.238143190741539,
+        0.238143190741539,
+        0.30046260356903076,
+        0.2982558310031891,
+        0.30046260356903076,
+        0.6403413414955139,
+        0.26149171590805054,
+        0.8472647666931152,
+        0.8390758037567139,
+        0.4645985960960388,
+        0.4662382900714874
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 0,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 14,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 14,
+          "loss": 2.1466880800941954,
+          "train_top1": 0.518417477607727,
+          "cell_R1": 0.33639705882352944,
+          "top1_5m": 0.3235294117647059
+        }
+      },
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "30315ee6944e51df7e881277afde67a5aea0d2b88da13f4425814fd95fe1b239"
+    },
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "S3DISPose-50-25-25",
+      "backbone_seed": 0,
+      "head_seed": 1,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20360,
+      "mean": [
+        0.6733871102333069,
+        0.5,
+        0.700832188129425,
+        0.5,
+        0.5,
+        0.28965893387794495,
+        0.28965893387794495,
+        0.0966712161898613,
+        0.5,
+        -0.033975668251514435,
+        -0.09475173056125641,
+        0.19688375294208527,
+        0.110313780605793,
+        0.110313780605793,
+        0.5,
+        0.5,
+        0.5,
+        0.911905825138092,
+        0.667789876461029,
+        2.4388744831085205,
+        2.4482228755950928,
+        0.825424313545227,
+        0.831127941608429
+      ],
+      "std": [
+        0.08316431939601898,
+        0.30046260356903076,
+        0.2531735599040985,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.4536041021347046,
+        0.2254636436700821,
+        0.21946504712104797,
+        0.30046260356903076,
+        0.13448306918144226,
+        0.13710184395313263,
+        0.09083851426839828,
+        0.238143190741539,
+        0.238143190741539,
+        0.30046260356903076,
+        0.2982558310031891,
+        0.30046260356903076,
+        0.6403413414955139,
+        0.26149171590805054,
+        0.8472647666931152,
+        0.8390758037567139,
+        0.4645985960960388,
+        0.4662382900714874
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 1,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 30,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 30,
+          "loss": 1.3820625994085127,
+          "train_top1": 0.5320600271224976,
+          "cell_R1": 0.34191176470588236,
+          "top1_5m": 0.3235294117647059
+        }
+      },
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "a44ddb043d7697e7875aafb93a3c1678f22e31712c3a100957c16257c4168f02"
+    },
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "S3DISPose-50-25-25",
+      "backbone_seed": 0,
+      "head_seed": 2,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20360,
+      "mean": [
+        0.6733871102333069,
+        0.5,
+        0.700832188129425,
+        0.5,
+        0.5,
+        0.28965893387794495,
+        0.28965893387794495,
+        0.0966712161898613,
+        0.5,
+        -0.033975668251514435,
+        -0.09475173056125641,
+        0.19688375294208527,
+        0.110313780605793,
+        0.110313780605793,
+        0.5,
+        0.5,
+        0.5,
+        0.911905825138092,
+        0.667789876461029,
+        2.4388744831085205,
+        2.4482228755950928,
+        0.825424313545227,
+        0.831127941608429
+      ],
+      "std": [
+        0.08316431939601898,
+        0.30046260356903076,
+        0.2531735599040985,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.4536041021347046,
+        0.2254636436700821,
+        0.21946504712104797,
+        0.30046260356903076,
+        0.13448306918144226,
+        0.13710184395313263,
+        0.09083851426839828,
+        0.238143190741539,
+        0.238143190741539,
+        0.30046260356903076,
+        0.2982558310031891,
+        0.30046260356903076,
+        0.6403413414955139,
+        0.26149171590805054,
+        0.8472647666931152,
+        0.8390758037567139,
+        0.4645985960960388,
+        0.4662382900714874
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 2,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 30,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 30,
+          "loss": 1.3627673104547706,
+          "train_top1": 0.542974054813385,
+          "cell_R1": 0.3400735294117647,
+          "top1_5m": 0.3272058823529412
+        }
+      },
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "19222f011aa9e96921993b1d643ac479c18a7df3fee1063c5edef39cce714b6d"
+    }
+  ],
+  "ablation_heads": [
+    {
+      "file": "ablation/ht21_seed0.pt",
+      "stage": "head",
+      "head_seed": 0,
+      "bytes": 19720,
+      "sha256": "8bb2916a896438fe96521d353b2715d153806cd96d82061eb6ee3076ec9046c1",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    },
+    {
+      "file": "ablation/ht21_seed1.pt",
+      "stage": "head",
+      "head_seed": 1,
+      "bytes": 19720,
+      "sha256": "2fc303e7e91d98cf61a41310dd808a84ef7d2c97579bf2661355beee9f03b23e",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    },
+    {
+      "file": "ablation/ht21_seed2.pt",
+      "stage": "head",
+      "head_seed": 2,
+      "bytes": 19720,
+      "sha256": "744ae1836f7df73dace13d77dcf11fb66767ae2e9e33afde6b80e995434d0463",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    }
+  ]
+}

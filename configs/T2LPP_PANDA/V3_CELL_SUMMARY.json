@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2LPP_PANDA",
+  "method": "Text2Loc++",
+  "dataset": "PANDA",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "历史单测头 A=B（ep30）",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_PANDA/coarse__coarse.pth",
+      "sha256": "04bfd52fc10099ebd7a53ad7de354708ff67ff8a08b11749ae3f6a50c3dc3c4b",
+      "bytes": 27992926,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_PANDA/fine__fine.pth",
+      "sha256": "8600eca06c0797b592967e749b056529d53f3076347cfb6f18e96fd629aa59ee",
+      "bytes": 23597333,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_PANDA/headAB__head_seed0_ht23.pt",
+      "sha256": "7f727592e2b7d4fbaef05463525129eda17f385838a5e34c13284c77fad30c16",
+      "bytes": 27780,
+      "selected_epoch": "30",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/T2LPP_PANDA/headAB__head_seed0_ht23.pt",
+      "sha256": "7f727592e2b7d4fbaef05463525129eda17f385838a5e34c13284c77fad30c16",
+      "bytes": 27780,
+      "selected_epoch": "30",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2LPP_PANDA",
+    "method": "Text2Loc++",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/T2LPP_PANDA/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/Text2LocPP-SCAR-HT__PandaSetPose-50-25-25__bb0__frozen_20261027/NORMALIZATION.json",
+    "source_sha256": "5d379d48042cf4839e7a6d58ce2e876ca5339db0958c5ee1531811a220d903cb",
+    "archive_sha256": "5bf882486363a049162587438a9e3f7dab6fa18f055e68712a65d2ffe13134a5",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": ""
+}

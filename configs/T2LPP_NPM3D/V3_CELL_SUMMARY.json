@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2LPP_NPM3D",
+  "method": "Text2Loc++",
+  "dataset": "NPM3D",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "历史单测头 A=B（ep18）",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_NPM3D/coarse__coarse.pth",
+      "sha256": "3455bb1dfcb9de76192cd47102a12edf82955ba211c5154cdaff805bfc28496d",
+      "bytes": 27976478,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_NPM3D/fine__fine.pth",
+      "sha256": "e974028c19bbb24587e748b1dcb811400bf0f63dfebf7c98a51f1e34e2eb4549",
+      "bytes": 23584981,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_NPM3D/headAB__head_seed0_ht23.pt",
+      "sha256": "3971a3099a48519c1da040b7dc28ef1cbe27ebe00f87d4259b63304452fcb807",
+      "bytes": 27332,
+      "selected_epoch": "18",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/T2LPP_NPM3D/headAB__head_seed0_ht23.pt",
+      "sha256": "3971a3099a48519c1da040b7dc28ef1cbe27ebe00f87d4259b63304452fcb807",
+      "bytes": 27332,
+      "selected_epoch": "18",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2LPP_NPM3D",
+    "method": "Text2Loc++",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/T2LPP_NPM3D/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/Text2LocPP-SCAR-HT__NPM3DPose-20-10__bb0__frozen_20261027/NORMALIZATION.json",
+    "source_sha256": "046fd7ec3db9e1986438d73c2c025cb1ef41a146a6fcd2aebd1425e198f90c24",
+    "archive_sha256": "505fa376b69c9f51b048ae9b63f0ff93398174e5710ef44fec5bc2cd23b144c0",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": ""
+}

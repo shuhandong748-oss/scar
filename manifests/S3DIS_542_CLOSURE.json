@@ -1,0 +1,34 @@
+{
+ "id": "S3DIS-DENOMINATOR-CLOSURE-20261111",
+ "closes": "M-36 (TEST_COUNT_DISCREPANCY 542 vs 544)",
+ "status": "CLOSED",
+ "conclusion": "542 is the actual frozen TEST split; 544 is the nominal 68 rooms x 8 queries/room.",
+ "receipt": {
+  "path": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\reports\\S3DIS_DENOMINATOR_542_544.json",
+  "zh": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\reports\\S3DIS_DENOMINATOR_542_544_ZH.md",
+  "duplicate": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104\\C\\records\\S3DIS_DENOMINATOR_542_544.json"
+ },
+ "dataset_manifest": {
+  "path": "E:\\TIKTOK\\Des4Pos-GC\\refine-logs\\baseline_recovery_20261102\\C_corrected_domains\\s3dis\\val_inputs\\dataset_manifest.json",
+  "sha256": "41e00444edf66f72f9e44508c2071e6dd087c0edb7c4a58c0df4b07c59267b15",
+  "name": "S3DISPose-50-25-25"
+ },
+ "breakdown": {
+  "rooms": 68,
+  "rooms_with_8_poses": 67,
+  "rooms_with_6_poses": 1,
+  "room_with_6": "d092",
+  "total": 542,
+  "nominal": 544
+ },
+ "independent_confirmations": 5,
+ "denominator_policy": "all 542 queries; invalid/empty lists count as failures; 436 valid lists is NOT the denominator",
+ "code_constraint": "frozen scar_common.py expects 544 and hard-aborts; use additive TEST entry, do not edit the frozen guard or historical marker",
+ "affected_cells": [
+  "D4P_S3DIS",
+  "T2L_S3DIS",
+  "T2LPP_S3DIS",
+  "MNCL_S3DIS",
+  "MP_S3DIS"
+ ]
+}

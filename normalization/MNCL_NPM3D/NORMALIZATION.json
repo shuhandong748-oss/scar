@@ -1,0 +1,526 @@
+{
+  "package_id": "MNCL-SCAR-HT/NPM3DPose-20-10/bb0/frozen",
+  "created": "2026-10-27",
+  "inference": "(feats - mean) / std per column, then MLP 23->64->32->1 (ReLU, no output activation)",
+  "pinned_rule": "columns with TRAIN std < 1e-3 pinned to std=1.0",
+  "heads": [
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "NPM3DPose-20-10",
+      "backbone_seed": 0,
+      "head_seed": 0,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20296,
+      "mean": [
+        0.38218727707862854,
+        0.5,
+        0.8111111521720886,
+        0.5,
+        0.5,
+        0.5350000262260437,
+        0.5350000262260437,
+        0.0,
+        0.5,
+        -0.007928300648927689,
+        0.005607269704341888,
+        0.2820834219455719,
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        0.5,
+        0.11767709255218506,
+        0.8111111521720886,
+        1.3891313076019287,
+        1.3929169178009033,
+        1.313601016998291,
+        1.3214831352233887
+      ],
+      "std": [
+        0.13334226608276367,
+        0.30046260356903076,
+        0.2294652909040451,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.4987734854221344,
+        0.20946361124515533,
+        1.0,
+        0.30046260356903076,
+        0.17984436452388763,
+        0.2248172163963318,
+        0.058395400643348694,
+        1.0,
+        1.0,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.02555162087082863,
+        0.2294652909040451,
+        0.6858320832252502,
+        0.6851757168769836,
+        0.7602728605270386,
+        0.7610766887664795
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 0,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 18,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 18,
+          "loss": 2.995443344116211,
+          "train_top1": 0.1770833283662796,
+          "cell_R1": 0.1484375,
+          "top1_5m": 0.1171875
+        }
+      },
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "735f7796c98ea1227bb6bc974b17d67a1e6b1299f5162e5b6430b2bc5536256f"
+    },
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "NPM3DPose-20-10",
+      "backbone_seed": 0,
+      "head_seed": 1,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20296,
+      "mean": [
+        0.38218727707862854,
+        0.5,
+        0.8111111521720886,
+        0.5,
+        0.5,
+        0.5350000262260437,
+        0.5350000262260437,
+        0.0,
+        0.5,
+        -0.007928300648927689,
+        0.005607269704341888,
+        0.2820834219455719,
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        0.5,
+        0.11767709255218506,
+        0.8111111521720886,
+        1.3891313076019287,
+        1.3929169178009033,
+        1.313601016998291,
+        1.3214831352233887
+      ],
+      "std": [
+        0.13334226608276367,
+        0.30046260356903076,
+        0.2294652909040451,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.4987734854221344,
+        0.20946361124515533,
+        1.0,
+        0.30046260356903076,
+        0.17984436452388763,
+        0.2248172163963318,
+        0.058395400643348694,
+        1.0,
+        1.0,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.02555162087082863,
+        0.2294652909040451,
+        0.6858320832252502,
+        0.6851757168769836,
+        0.7602728605270386,
+        0.7610766887664795
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 1,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 4,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 4,
+          "loss": 3.1209285259246826,
+          "train_top1": 0.1666666716337204,
+          "cell_R1": 0.1484375,
+          "top1_5m": 0.1171875
+        }
+      },
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "9f1a111c4e95a0547e49fc882149081c5585bf65e2fb8b3a55461b24c31965a4"
+    },
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "NPM3DPose-20-10",
+      "backbone_seed": 0,
+      "head_seed": 2,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20296,
+      "mean": [
+        0.38218727707862854,
+        0.5,
+        0.8111111521720886,
+        0.5,
+        0.5,
+        0.5350000262260437,
+        0.5350000262260437,
+        0.0,
+        0.5,
+        -0.007928300648927689,
+        0.005607269704341888,
+        0.2820834219455719,
+        0.0,
+        0.0,
+        0.5,
+        0.5,
+        0.5,
+        0.11767709255218506,
+        0.8111111521720886,
+        1.3891313076019287,
+        1.3929169178009033,
+        1.313601016998291,
+        1.3214831352233887
+      ],
+      "std": [
+        0.13334226608276367,
+        0.30046260356903076,
+        0.2294652909040451,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.4987734854221344,
+        0.20946361124515533,
+        1.0,
+        0.30046260356903076,
+        0.17984436452388763,
+        0.2248172163963318,
+        0.058395400643348694,
+        1.0,
+        1.0,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.02555162087082863,
+        0.2294652909040451,
+        0.6858320832252502,
+        0.6851757168769836,
+        0.7602728605270386,
+        0.7610766887664795
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 2,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 14,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 14,
+          "loss": 3.0133450031280518,
+          "train_top1": 0.1875,
+          "cell_R1": 0.21875,
+          "top1_5m": 0.15625
+        }
+      },
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "50e5bf0198e8a6c01cdbca8eb0a979e36ab6b306985f2ff0e721f50b356a2a56"
+    }
+  ],
+  "ablation_heads": [
+    {
+      "file": "ablation/ht21_seed0.pt",
+      "stage": "head",
+      "head_seed": 0,
+      "bytes": 19720,
+      "sha256": "89423569564b7c1f218a89658739e833d54ba36f9973beaf5cd979a962fce845",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    },
+    {
+      "file": "ablation/ht21_seed1.pt",
+      "stage": "head",
+      "head_seed": 1,
+      "bytes": 19720,
+      "sha256": "cedc43f92cddff127b01df7674cd176bc3a88b232384f0a6fd80089d121521a4",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    },
+    {
+      "file": "ablation/ht21_seed2.pt",
+      "stage": "head",
+      "head_seed": 2,
+      "bytes": 19720,
+      "sha256": "876de6d139dec4d846fcfa1b03c3087e0f312e9cbaa8b68bac8b7b6d782bfb4a",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    }
+  ]
+}

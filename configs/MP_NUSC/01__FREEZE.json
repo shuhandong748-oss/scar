@@ -1,0 +1,300 @@
+{
+  "coarse": {
+    "all_epochs": [
+      {
+        "epoch": 1,
+        "r1": 0.342,
+        "r3": 0.512,
+        "r5": 0.612
+      },
+      {
+        "epoch": 2,
+        "r1": 0.491,
+        "r3": 0.664,
+        "r5": 0.748
+      },
+      {
+        "epoch": 3,
+        "r1": 0.455,
+        "r3": 0.651,
+        "r5": 0.726
+      },
+      {
+        "epoch": 4,
+        "r1": 0.493,
+        "r3": 0.672,
+        "r5": 0.754
+      },
+      {
+        "epoch": 5,
+        "r1": 0.536,
+        "r3": 0.714,
+        "r5": 0.779
+      },
+      {
+        "epoch": 6,
+        "r1": 0.506,
+        "r3": 0.707,
+        "r5": 0.785
+      },
+      {
+        "epoch": 7,
+        "r1": 0.556,
+        "r3": 0.725,
+        "r5": 0.814
+      },
+      {
+        "epoch": 8,
+        "r1": 0.542,
+        "r3": 0.727,
+        "r5": 0.786
+      },
+      {
+        "epoch": 9,
+        "r1": 0.537,
+        "r3": 0.711,
+        "r5": 0.778
+      },
+      {
+        "epoch": 10,
+        "r1": 0.542,
+        "r3": 0.709,
+        "r5": 0.781
+      },
+      {
+        "epoch": 11,
+        "r1": 0.562,
+        "r3": 0.713,
+        "r5": 0.777
+      },
+      {
+        "epoch": 12,
+        "r1": 0.555,
+        "r3": 0.727,
+        "r5": 0.783
+      },
+      {
+        "epoch": 13,
+        "r1": 0.535,
+        "r3": 0.712,
+        "r5": 0.771
+      },
+      {
+        "epoch": 14,
+        "r1": 0.493,
+        "r3": 0.659,
+        "r5": 0.738
+      },
+      {
+        "epoch": 15,
+        "r1": 0.538,
+        "r3": 0.694,
+        "r5": 0.761
+      },
+      {
+        "epoch": 16,
+        "r1": 0.536,
+        "r3": 0.693,
+        "r5": 0.784
+      },
+      {
+        "epoch": 17,
+        "r1": 0.496,
+        "r3": 0.671,
+        "r5": 0.743
+      },
+      {
+        "epoch": 18,
+        "r1": 0.558,
+        "r3": 0.724,
+        "r5": 0.796
+      },
+      {
+        "epoch": 19,
+        "r1": 0.514,
+        "r3": 0.686,
+        "r5": 0.76
+      },
+      {
+        "epoch": 20,
+        "r1": 0.503,
+        "r3": 0.695,
+        "r5": 0.761
+      }
+    ],
+    "checkpoint": "<REMOTE_PATH>",
+    "epoch": 7,
+    "epochs": 20,
+    "exit_code": 0,
+    "filename": "coarse_contN_epoch7_acc0.814_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth",
+    "log": "<REMOTE_PATH>",
+    "log_sha256": "d212efa05b6b5c7313548e5b69bf029df9d3dcbd76dac30258a5b1baee6b3d1a",
+    "rule": "max VAL R@5 (k=max(top_k)=5), strict >, earliest wins",
+    "rule_source": "frozen core training/coarse.py: acc_val = val_acc[max(args.top_k)]",
+    "sha256": "30a99b95635e6fa05848d3f71e7d1312dba03fca47af90a6d716d5fd6787a067",
+    "val_R1": 0.556,
+    "val_R3": 0.725,
+    "val_R5": 0.814
+  },
+  "fine": {
+    "all_epochs": [
+      {
+        "epoch": 1,
+        "v_offset": 0.254
+      },
+      {
+        "epoch": 2,
+        "v_offset": 0.23
+      },
+      {
+        "epoch": 3,
+        "v_offset": 0.162
+      },
+      {
+        "epoch": 4,
+        "v_offset": 0.122
+      },
+      {
+        "epoch": 5,
+        "v_offset": 0.145
+      },
+      {
+        "epoch": 6,
+        "v_offset": 0.119
+      },
+      {
+        "epoch": 7,
+        "v_offset": 0.105
+      },
+      {
+        "epoch": 8,
+        "v_offset": 0.167
+      },
+      {
+        "epoch": 9,
+        "v_offset": 0.105
+      },
+      {
+        "epoch": 10,
+        "v_offset": 0.104
+      },
+      {
+        "epoch": 11,
+        "v_offset": 0.1
+      },
+      {
+        "epoch": 12,
+        "v_offset": 0.124
+      },
+      {
+        "epoch": 13,
+        "v_offset": 0.1
+      },
+      {
+        "epoch": 14,
+        "v_offset": 0.091
+      },
+      {
+        "epoch": 15,
+        "v_offset": 0.105
+      },
+      {
+        "epoch": 16,
+        "v_offset": 0.114
+      },
+      {
+        "epoch": 17,
+        "v_offset": 0.095
+      },
+      {
+        "epoch": 18,
+        "v_offset": 0.111
+      },
+      {
+        "epoch": 19,
+        "v_offset": 0.104
+      },
+      {
+        "epoch": 20,
+        "v_offset": 0.094
+      },
+      {
+        "epoch": 21,
+        "v_offset": 0.116
+      },
+      {
+        "epoch": 22,
+        "v_offset": 0.112
+      },
+      {
+        "epoch": 23,
+        "v_offset": 0.107
+      },
+      {
+        "epoch": 24,
+        "v_offset": 0.101
+      },
+      {
+        "epoch": 25,
+        "v_offset": 0.128
+      },
+      {
+        "epoch": 26,
+        "v_offset": 0.098
+      },
+      {
+        "epoch": 27,
+        "v_offset": 0.097
+      },
+      {
+        "epoch": 28,
+        "v_offset": 0.095
+      },
+      {
+        "epoch": 29,
+        "v_offset": 0.102
+      },
+      {
+        "epoch": 30,
+        "v_offset": 0.096
+      },
+      {
+        "epoch": 31,
+        "v_offset": 0.143
+      },
+      {
+        "epoch": 32,
+        "v_offset": 0.108
+      },
+      {
+        "epoch": 33,
+        "v_offset": 0.094
+      },
+      {
+        "epoch": 34,
+        "v_offset": 0.102
+      },
+      {
+        "epoch": 35,
+        "v_offset": 0.1
+      }
+    ],
+    "checkpoint": "<REMOTE_PATH>",
+    "epoch": 14,
+    "epochs": 35,
+    "exit_code": 0,
+    "filename": "fine_contN_epoch14_offset0.091_lr0.0003_obj-6-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth",
+    "log": "<REMOTE_PATH>",
+    "log_sha256": "11881deb74e934548a85639ac4d754b018f1a2d60768c13e881986c862727b09",
+    "rule": "min mean VAL pose offset, strict <, earliest wins",
+    "rule_source": "frozen core training/fine.py: if offset < best_val_offset",
+    "sha256": "293714e064fdf4edc8d6fbc601e9a79c11232794a29a0df2dd7856bace39c242",
+    "val_offset": 0.091
+  },
+  "frozen_at": "2026-10-29T09:38:48+0800",
+  "note": "selection re-derived from the logs with the core rule; the rule was not chosen from VAL results; TEST was never constructed",
+  "protocol": "MAMBAPLACE-NUSCENES-FULL-bb0",
+  "seed": 0,
+  "test_closed": true,
+  "test_marker_absent": true
+}

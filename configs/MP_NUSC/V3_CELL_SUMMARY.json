@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MP_NUSC",
+  "method": "MambaPlace",
+  "dataset": "NUSC",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "MambaPlace 原头 A=B（ep22）",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_NUSC/coarse__coarse_contN_epoch7_acc0.814_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth",
+      "sha256": "30a99b95635e6fa05848d3f71e7d1312dba03fca47af90a6d716d5fd6787a067",
+      "bytes": 128045388,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "7"
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_NUSC/fine__fine_contN_epoch14_offset0.091_lr0.0003_obj-6-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth",
+      "sha256": "293714e064fdf4edc8d6fbc601e9a79c11232794a29a0df2dd7856bace39c242",
+      "bytes": 115744250,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "14"
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_NUSC/headAB__ht23_mp_s0.pt",
+      "sha256": "2ccfb02c1ddb11ff336e727dfea6fec80f1b5589d675792e242b15920c840fb6",
+      "bytes": 27494,
+      "selected_epoch": "22",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/MP_NUSC/headAB__ht23_mp_s0.pt",
+      "sha256": "2ccfb02c1ddb11ff336e727dfea6fec80f1b5589d675792e242b15920c840fb6",
+      "bytes": 27494,
+      "selected_epoch": "22",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "PARTIAL",
+  "architecture_config_evidence": "FREEZE record gives head contract/backbone commit; full backbone hyperparameters not in a dedicated config.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MP_NUSC",
+    "method": "MambaPlace",
+    "norm_mode": "MISSING",
+    "archive_path": "",
+    "source_ref": "",
+    "source_sha256": "",
+    "archive_sha256": "",
+    "status": "MISSING",
+    "note": "No norm row in ASSET_INDEX_V2."
+  },
+  "no_test_asset_included": true,
+  "note": ""
+}

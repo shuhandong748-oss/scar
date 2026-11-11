@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "D4P_NPM3D",
+  "method": "Des4Pos-v2-revised",
+  "dataset": "NPM3D",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "Des4Pos 原始轨迹头 A=ep28/B=ep28",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_NPM3D/coarse__coarse_best.pth",
+      "sha256": "7fff7dade61b1fd3f2c12762664a7628e622423ee10cc4a43eb1ea7606bdadc1",
+      "bytes": 65502102,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_NPM3D/fine__fine_best.pth",
+      "sha256": "c9a5fefc79b5b104b77db2ace840d75c41db19a1838d88267720c7bd3231ed1d",
+      "bytes": 53723130,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_NPM3D/headAB__ht23_d4p_npm3d_s0.pt",
+      "sha256": "193676f255627e2025285ba7b61e9aa54e1fa0d8b9409b75246258420084fc49",
+      "bytes": 28012,
+      "selected_epoch": "28",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/D4P_NPM3D/headAB__ht23_d4p_npm3d_s0.pt",
+      "sha256": "193676f255627e2025285ba7b61e9aa54e1fa0d8b9409b75246258420084fc49",
+      "bytes": 28012,
+      "selected_epoch": "28",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "D4P_NPM3D",
+    "method": "Des4Pos-v2-revised",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/D4P_NPM3D/num_stats.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/c_machine/des4pos_npm3d/delivery/extracted/R059-C-Des4PosPaper-NPM3D-bb0/ckpt/NPM3D/R059-C-Des4PosPaper-NPM3D-bb0_coarse_seed0/num_stats.json",
+    "source_sha256": "9798c01228dc9d870a2c624d46db1ea6cbdf96abed6d2e88ca7dcadb4aa82c4c",
+    "archive_sha256": "4fa1d94379d2780052ed23c20890eaf54b46958a57d9768254d3618b173b3c58",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": " CLIP文本特征缓存本地；CLIP模型本身未备份（仅重训STE需要）"
+}

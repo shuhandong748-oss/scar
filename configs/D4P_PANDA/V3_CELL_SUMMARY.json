@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "D4P_PANDA",
+  "method": "Des4Pos-v2-revised",
+  "dataset": "PANDA",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "Des4Pos 原始轨迹头 A=ep18/B=ep18",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_PANDA/coarse__coarse_best.pth",
+      "sha256": "a13f2282ba021f7f81a0b3d96deb30fb1cf17f87dbb19367d021bb7e626d7609",
+      "bytes": 65511702,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_PANDA/fine__fine_best.pth",
+      "sha256": "b51e4c6e36cc2998aeadf8fabd1372bc83c09b9cdd3db348c28cd9ceac84aca2",
+      "bytes": 53728122,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_PANDA/headAB__selected.pt",
+      "sha256": "f261592bd5706e50db5bd685bc5bcb4c31913c997a5bb03711dccf79fdbecea9",
+      "bytes": 25554,
+      "selected_epoch": "18",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/D4P_PANDA/headAB__selected.pt",
+      "sha256": "f261592bd5706e50db5bd685bc5bcb4c31913c997a5bb03711dccf79fdbecea9",
+      "bytes": 25554,
+      "selected_epoch": "18",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "D4P_PANDA",
+    "method": "Des4Pos-v2-revised",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/D4P_PANDA/num_stats.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/scar_b_20261029/assets/d4p_pandaset/delivery/evidence/num_stats.json",
+    "source_sha256": "123dbc720f1fbd87402f927b57855b01020f585bb663da6c9e9cd75008c5378d",
+    "archive_sha256": "15e5bf6aa5aa2f84fccb7120c5153fa2e3bdb0045f0819289649464418d4ee13",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "PandaSet粗/细/STE/CLIP文本特征只在<MACHINE>；STE_FREEZE记录完整路径与sha。 CLIP文本特征缓存本地；CLIP模型本身未备份（仅重训STE需要）"
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "D4P_NUSC",
+  "method": "Des4Pos-v2-revised",
+  "dataset": "NUSC",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "Des4Pos 原始轨迹头 A=ep26/B=ep26",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_NUSC/coarse__coarse_best.pth",
+      "sha256": "0d18aee59a50a5fc69186a8b335686b3510491ed090a9e13c89c9d3163643ac8",
+      "bytes": 65512790,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_NUSC/fine__fine_best.pth",
+      "sha256": "6532a9d02fe4370fa105556cb90b5cf4640426f3a3c9ebf83968b9922f912d7f",
+      "bytes": 53728698,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_NUSC/headAB__selected.pt",
+      "sha256": "71490f00e5e7ea8c13b62ef0594481ce0a451708a79305901bce3cc267d9c815",
+      "bytes": 25490,
+      "selected_epoch": "26",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/D4P_NUSC/headAB__selected.pt",
+      "sha256": "71490f00e5e7ea8c13b62ef0594481ce0a451708a79305901bce3cc267d9c815",
+      "bytes": 25490,
+      "selected_epoch": "26",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "D4P_NUSC",
+    "method": "Des4Pos-v2-revised",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/D4P_NUSC/num_stats.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/scar_b_20261029/assets/d4p_nusc/delivery/evidence/num_stats.json",
+    "source_sha256": "e1279cc90d4c0a62b1aefa5e1bd539f84231acd826e27f3ad93d6718f0d9311d",
+    "archive_sha256": "9cbcb26825def3dfd67a7b383094a073a7dc633c21405087152131ea2bc46027",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": " CLIP文本特征缓存本地；CLIP模型本身未备份（仅重训STE需要）"
+}

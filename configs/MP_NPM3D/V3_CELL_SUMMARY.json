@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MP_NPM3D",
+  "method": "MambaPlace",
+  "dataset": "NPM3D",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "MambaPlace 原头 A=B（ep27）",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_NPM3D/coarse__coarse_contN_epoch20_acc0.664_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth",
+      "sha256": "accfdbb18a3fc2d1c7ea30ced16dd7d829332985fcb8b48f6a4a3c0bc8efa7b0",
+      "bytes": 128027122,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "20"
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_NPM3D/fine__fine_contN_epoch31_offset0.142_lr0.0003_obj-3-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth",
+      "sha256": "251744b0a0b0b982d5d86c2fa770d59f96da44e462a2ef0fd777667bfa61e67c",
+      "bytes": 115730362,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "31"
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_NPM3D/headAB__ht23_mp_s0.pt",
+      "sha256": "c61a50e697bcca8892e31eb653451578a3b8749ed875bd2c3fb876ae39e74add",
+      "bytes": 27622,
+      "selected_epoch": "27",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/MP_NPM3D/headAB__ht23_mp_s0.pt",
+      "sha256": "c61a50e697bcca8892e31eb653451578a3b8749ed875bd2c3fb876ae39e74add",
+      "bytes": 27622,
+      "selected_epoch": "27",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "PRESENT_CORRECTED",
+  "architecture_config_evidence": "R059_NPM3D_PROTOCOL.json registered in V3; V2 registered only C_ACCEPTANCE.json",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MP_NPM3D",
+    "method": "MambaPlace",
+    "norm_mode": "MISSING",
+    "archive_path": "",
+    "source_ref": "",
+    "source_sha256": "",
+    "archive_sha256": "",
+    "status": "MISSING",
+    "note": "No norm row in ASSET_INDEX_V2."
+  },
+  "no_test_asset_included": true,
+  "note": "派生 PointNet 未单独落盘，可由本地源 PointNet(ef63fdfc)+convert_pointnet.py 确定性重建；若要求派生文件已存在，则本格降为‘待重建’。"
+}

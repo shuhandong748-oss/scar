@@ -1,0 +1,352 @@
+{
+  "schema": "C_ACCEPTANCE_v1",
+  "accepted_by": "C",
+  "accepted_at": "2026-10-28T04:54:37+00:00",
+  "machine": {
+    "hostname": "<REMOTE_HOST>-container-a1f743bacb-ceb33c9c",
+    "endpoint": "<REMOTE_HOST>",
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 4080 SUPER",
+      "total_mib": 32760.0,
+      "free_mib": 32230.0,
+      "uuid": "GPU-9565bb33-b623-63e2-f92e-991baf9003da"
+    },
+    "release_dir": "<REMOTE_PATH>"
+  },
+  "releases": {
+    "MambaPlace": {
+      "release_id": "E-REL-MAMBAPLACE-NPM3D-20261028",
+      "file": "<REMOTE_PATH>",
+      "sha256": "21a878afba390a172500e77e1781edffc4167bf4af3b558ec59809f21e82bfa1",
+      "combo_id": "R059-E-MambaPlace-NPM3D-bb0",
+      "core_package_sha256": "67a480c4a3f87e094faf3cc7bf0927bf221ddaa96957074043ac6ec4bd532169",
+      "core_manifest_sha256": "789988fe124d065f6d0c49bdc812a57c90fceb5db97603548f07027de58d6c01",
+      "dataset_manifest_sha256": "6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c"
+    },
+    "Des4Pos": {
+      "release_id": "E-REL-DES4POS-NPM3D-20261028",
+      "file": "<REMOTE_PATH>",
+      "sha256": "4e659bbb6aef50a97f1bfb3896e704e0332950c80adee1c927fe00de2db85e14",
+      "combo_id": "R059-E-Des4PosPaper-NPM3D-bb0",
+      "core_package_sha256": "85cbbeb9c0f5fcdb7404279bf383e3ffb7b5863f3818d6c56cd93aa30bf30cf2",
+      "core_manifest_sha256": "c51bf63a535d78f299d6a556560eafb0660f39c8c8dd017efbd680cccd2890fc",
+      "dataset_manifest_sha256": "6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c"
+    }
+  },
+  "assets": {
+    "core_src": "<REMOTE_PATH>",
+    "core_controlled_files_ok": 35,
+    "core_package": "<REMOTE_PATH>",
+    "des4pos_package": "<REMOTE_PATH>",
+    "data_root": "<REMOTE_PATH>",
+    "data_files_ok": 457,
+    "per_file_manifest": "<REMOTE_PATH>"
+  },
+  "logical_conflicts_disclosed": [
+    "release prose says '92 cells / ~368 poses'; the hash-bound manifest and the per-file list both say 91 scenes / 91 cells / 364 poses (train 30/120, val 32/128, test 29/116). The manifest is authoritative; the prose count is treated as a miscount (direction/ holds 91 + _summary).",
+    "C previously verified the 35-file controlled manifest from a tree patched in place (R059_CORE_v1); the SOURCE_READY_v1 package was uploaded and re-verified 35/35 on C at acceptance time. Identity is carried by commit f852d9c1 + controlled manifest 789988fe, not by the older tar name."
+  ],
+  "test_history_disclosure": "NPM3D TEST was already read in this project by B (MNCL H-T 2026-10-25 10:33), C (Text2Loc 2026-10-25 21:11:43 superseded + 21:25:36 corrected) and E (Text2Loc++ R055). Results from these two new combinations are exploratory evidence, not a first blind test.",
+  "status": "ACCEPTED_FROM_E",
+  "PASS": true,
+  "hard_failures": [],
+  "checks": [
+    {
+      "check": "release_sha256:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "got": "21a878afba390a172500e77e1781edffc4167bf4af3b558ec59809f21e82bfa1",
+        "expected": "21a878afba390a172500e77e1781edffc4167bf4af3b558ec59809f21e82bfa1"
+      }
+    },
+    {
+      "check": "release_sidecar:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "sidecar": "21a878afba390a172500e77e1781edffc4167bf4af3b558ec59809f21e82bfa1",
+        "file": "21a878afba390a172500e77e1781edffc4167bf4af3b558ec59809f21e82bfa1"
+      }
+    },
+    {
+      "check": "release_schema:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "COMBO_RELEASE_v1"
+    },
+    {
+      "check": "release_status:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "RELEASED_TO_C"
+    },
+    {
+      "check": "release_combo_id:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "R059-E-MambaPlace-NPM3D-bb0"
+    },
+    {
+      "check": "release_method:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "MambaPlace"
+    },
+    {
+      "check": "release_backbone_seed:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "bb0 (seed 0; no additional backbone seeds permitted)"
+    },
+    {
+      "check": "release_core_manifest:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "789988fe124d065f6d0c49bdc812a57c90fceb5db97603548f07027de58d6c01"
+    },
+    {
+      "check": "release_core_package:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "67a480c4a3f87e094faf3cc7bf0927bf221ddaa96957074043ac6ec4bd532169"
+    },
+    {
+      "check": "release_core_commit:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "f852d9c11eb312fb801b4109f099af0a3aed7f11"
+    },
+    {
+      "check": "release_dataset_manifest:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c"
+    },
+    {
+      "check": "release_dataset_tarball:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": "91b287639c6582aef7e574bd9ca1a4ad4aeccca73e5da435e9587600ef8814de"
+    },
+    {
+      "check": "release_target_hostname:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "record": "<REMOTE_HOST>-container-a1f743bacb-ceb33c9c",
+        "live": "<REMOTE_HOST>-container-a1f743bacb-ceb33c9c"
+      }
+    },
+    {
+      "check": "release_target_sole_executor:MambaPlace",
+      "ok": true,
+      "hard": true,
+      "detail": true
+    },
+    {
+      "check": "release_accept_state_pending:MambaPlace",
+      "ok": true,
+      "hard": false,
+      "detail": "PENDING_C_ACK"
+    },
+    {
+      "check": "release_sha256:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "got": "4e659bbb6aef50a97f1bfb3896e704e0332950c80adee1c927fe00de2db85e14",
+        "expected": "4e659bbb6aef50a97f1bfb3896e704e0332950c80adee1c927fe00de2db85e14"
+      }
+    },
+    {
+      "check": "release_sidecar:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "sidecar": "4e659bbb6aef50a97f1bfb3896e704e0332950c80adee1c927fe00de2db85e14",
+        "file": "4e659bbb6aef50a97f1bfb3896e704e0332950c80adee1c927fe00de2db85e14"
+      }
+    },
+    {
+      "check": "release_schema:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "COMBO_RELEASE_v1"
+    },
+    {
+      "check": "release_status:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "RELEASED_TO_C"
+    },
+    {
+      "check": "release_combo_id:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "R059-E-Des4PosPaper-NPM3D-bb0"
+    },
+    {
+      "check": "release_method:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "Des4Pos paper reimplementation (CORE_FIX_v2) — NOT the authors' code, must always be labelled as a reimplementation"
+    },
+    {
+      "check": "release_backbone_seed:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "bb0 (seed 0; no additional backbone seeds permitted)"
+    },
+    {
+      "check": "release_core_manifest:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "c51bf63a535d78f299d6a556560eafb0660f39c8c8dd017efbd680cccd2890fc"
+    },
+    {
+      "check": "release_core_package:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "85cbbeb9c0f5fcdb7404279bf383e3ffb7b5863f3818d6c56cd93aa30bf30cf2"
+    },
+    {
+      "check": "release_dataset_manifest:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c"
+    },
+    {
+      "check": "release_dataset_tarball:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": "91b287639c6582aef7e574bd9ca1a4ad4aeccca73e5da435e9587600ef8814de"
+    },
+    {
+      "check": "release_target_hostname:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "record": "<REMOTE_HOST>-container-a1f743bacb-ceb33c9c",
+        "live": "<REMOTE_HOST>-container-a1f743bacb-ceb33c9c"
+      }
+    },
+    {
+      "check": "release_target_sole_executor:Des4Pos",
+      "ok": true,
+      "hard": true,
+      "detail": true
+    },
+    {
+      "check": "release_accept_state_pending:Des4Pos",
+      "ok": true,
+      "hard": false,
+      "detail": "PENDING_C_ACK"
+    },
+    {
+      "check": "overview_sha256",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "got": "f5c83f1a8ecaa943f59db498203f5867c9ec6374a1be5dbce84ce0d10386d286",
+        "expected": "f5c83f1a8ecaa943f59db498203f5867c9ec6374a1be5dbce84ce0d10386d286"
+      }
+    },
+    {
+      "check": "core_controlled_files",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "ok": 35,
+        "failures": []
+      }
+    },
+    {
+      "check": "core_package_sha256",
+      "ok": true,
+      "hard": true,
+      "detail": "<REMOTE_PATH>"
+    },
+    {
+      "check": "des4pos_package_sha256",
+      "ok": true,
+      "hard": true,
+      "detail": "<REMOTE_PATH>"
+    },
+    {
+      "check": "dataset_manifest_sha256",
+      "ok": true,
+      "hard": true,
+      "detail": "<REMOTE_PATH>"
+    },
+    {
+      "check": "dataset_per_file_manifest",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "ok": 457,
+        "failures": []
+      }
+    },
+    {
+      "check": "no_gpu_compute_apps",
+      "ok": true,
+      "hard": true,
+      "detail": "none"
+    },
+    {
+      "check": "no_matching_processes",
+      "ok": true,
+      "hard": true,
+      "detail": "none"
+    },
+    {
+      "check": "no_autostart_schedule",
+      "ok": true,
+      "hard": true,
+      "detail": "none"
+    },
+    {
+      "check": "autostart_scripts_in_workspace",
+      "ok": true,
+      "hard": false,
+      "detail": "none"
+    },
+    {
+      "check": "test_marker_absent",
+      "ok": true,
+      "hard": true,
+      "detail": "none"
+    },
+    {
+      "check": "no_duplicate_npm3d_workspace",
+      "ok": true,
+      "hard": true,
+      "detail": [
+        "<REMOTE_PATH>",
+        "<REMOTE_PATH>",
+        "<REMOTE_PATH>",
+        "<REMOTE_PATH>"
+      ]
+    },
+    {
+      "check": "gpu_free_memory",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "free_gib": 31.47,
+        "required_gib": 20.0
+      }
+    },
+    {
+      "check": "disk_space",
+      "ok": true,
+      "hard": true,
+      "detail": {
+        "free_gib": 29.45,
+        "required_gib": 10.0
+      }
+    }
+  ],
+  "note": "read-only acceptance; no training, no model load, no TEST cell opened"
+}

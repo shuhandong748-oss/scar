@@ -1,0 +1,27 @@
+{
+  "counts_sha256": "8eb9ce5a5b9f3f829aa652d0647cf416f7b59e2c64e02ff500b5c1dfe5dbd2e4",
+  "domain": "npm3d",
+  "fitted_before_fixedpoints": true,
+  "manifest_sha256": "6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c",
+  "max_count": 512,
+  "mean": 429.17391304347825,
+  "min_count": 16,
+  "n_excluded": 0,
+  "n_objects": 138,
+  "n_seen": 138,
+  "pinned_zero_variance": false,
+  "provenance": "train_fit",
+  "source": "<REMOTE_PATH> TRAIN cells of 30 NPM3D scenes (manifest sha 6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c); raw obj.xyz before FixedPoints; known_classes from the adapter vocabulary",
+  "split": "train",
+  "std": 162.55803481153904,
+  "std_ddof": 0,
+  "version": 1,
+  "vocabulary": [
+    "building",
+    "car",
+    "ground",
+    "pedestrian",
+    "pole",
+    "vegetation"
+  ]
+}

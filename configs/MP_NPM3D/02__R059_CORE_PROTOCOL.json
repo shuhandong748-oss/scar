@@ -1,0 +1,219 @@
+{
+  "id": "R059",
+  "submission": "E / MambaPlace core + KITTI bb0",
+  "created_at": "2026-10-27T20:51:07+08:00",
+  "machine": {
+    "endpoint": "<REMOTE_HOST>",
+    "hostname": "<REMOTE_HOST>-container-p48vc3ykfm-2ab3e0ec",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "capability": [
+      8,
+      9
+    ]
+  },
+  "method": {
+    "repo": "https://github.com/CV4RA/MambaPlace.git",
+    "commit": "f852d9c11eb312fb801b4109f099af0a3aed7f11",
+    "tree": "f4f9a8e917d3de172f318c22bb4d698772ccfeaf",
+    "upstream_tree_before_compat": "7a75ca162c12fb89e3284167f09a0c947eddfdfbd5987c5fbd6378fac4d0245a",
+    "paper": "arXiv 2408.15740",
+    "compat_diff_stat": "models/cell_retrieval.py       |  3 ++-\n models/language_encoder.py     | 17 +++++++++++++++--\n models/pointcloud/pointnet2.py |  6 +++++-\n training/coarse.py             | 35 ++++++++++++++++++++++++++---------\n training/fine.py               | 26 +++++++++++++++++++++-----\n 5 files changed, 69 insertions(+), 18 deletions(-)",
+    "compat_registry": [
+      "COMPAT_001.md (env stack, MP-IMPORT, MP-SEED, MP-NOTEST-A/B)",
+      "COMPAT_002.md (nltk punkt import-time download)",
+      "COMPAT_003.md (PyG 2.4.0 pin + PointConv import path)"
+    ]
+  },
+  "dataset": {
+    "name": "KITTI360Pose k360_30-10_scG_pd10_pc4_spY_all",
+    "base_path": "<REMOTE_PATH>",
+    "access": "read-only symlink code/MambaPlace/data/k360_30-10_scG_pd10_pc4_spY_all",
+    "splits": {
+      "TRAIN": {
+        "n_cells": 11259,
+        "n_poses": 28807,
+        "cells_over_object_size_28": 329,
+        "cells_over_object_size_28_frac": 0.029221,
+        "poses_gtcell_over_pad16": 14627,
+        "poses_gtcell_over_pad16_frac": 0.507759
+      },
+      "VAL": {
+        "n_cells": 1434,
+        "n_poses": 3187,
+        "cells_over_object_size_28": 49,
+        "cells_over_object_size_28_frac": 0.03417,
+        "poses_gtcell_over_pad16": 1364,
+        "poses_gtcell_over_pad16_frac": 0.427989
+      },
+      "TEST": {
+        "n_cells": 4308,
+        "n_poses": 11505,
+        "cells_over_object_size_28": 113,
+        "cells_over_object_size_28_frac": 0.02623,
+        "poses_gtcell_over_pad16": 6139,
+        "poses_gtcell_over_pad16_frac": 0.533594
+      }
+    },
+    "data_sha256_manifest": "meta/DATA_SHA256.txt"
+  },
+  "backbone": "bb0",
+  "seed": 0,
+  "workdir": "<REMOTE_PATH>",
+  "env": {
+    "torch": "2.5.1+cu124",
+    "cuda": "12.4",
+    "torch_geometric": "2.6.1",
+    "transformers": "4.46.3",
+    "timm": "1.0.30",
+    "einops": "0.8.2",
+    "mamba_ssm": "2.2.2",
+    "causal_conv1d": "1.4.0",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "scikit_learn": "1.5.2",
+    "nltk": "3.10.4",
+    "pillow": "12.3.0",
+    "opencv": "4.10.0",
+    "matplotlib": "3.7.2",
+    "plyfile": "1.0.3",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "capability": [
+      8,
+      9
+    ]
+  },
+  "env_pins": {
+    "torch": "2.5.1+cu124",
+    "torchvision": "0.20.1+cu124",
+    "torch_geometric": "2.4.0 (last line carrying point_conv.py; see COMPAT_003)",
+    "torch_scatter/sparse/cluster": [
+      "2.1.2+pt25cu124",
+      "0.6.18+pt25cu124",
+      "1.6.3+pt25cu124"
+    ],
+    "causal_conv1d": "1.4.0 (built from source, GitHub v1.4.0 tag; PyPI sdist lacks csrc)",
+    "mamba_ssm": "2.2.2 (built from source, GitHub v2.2.2 tag; PyPI sdist lacks csrc)",
+    "transformers": "4.46.3",
+    "timm": "1.0.30",
+    "einops": "0.8.2",
+    "numpy": "1.26.4 (numpy 2 breaks matplotlib 3.7.2; see COMPAT_003)",
+    "scipy": "1.14.1",
+    "scikit_learn": "1.5.2",
+    "opencv-python-headless": "<IP>",
+    "matplotlib": "3.7.2",
+    "plyfile": "1.0.3",
+    "nltk": "3.10.4 (punkt + punkt_tab pre-provisioned in <REMOTE_PATH> see COMPAT_002)",
+    "note": "wheelhouse kept at env/wheels + SHA256SUMS.wheels; build steps in env/build_env4.sh"
+  },
+  "commands": {
+    "guard": "run/guard.sh <stage>  (requires meta/SCHEDULER_B_CLEARANCE, probe gate, R059_PROTOCOL.json)",
+    "coarse": "bash run/coarse_bb0.sh",
+    "fine": "bash run/fine_bb0.sh",
+    "coarse_args": "epochs 20, batch 64, lr 5e-4, step scheduler (step 7, gamma 0.4), temperature 0.1, contrastive, coarse_embed_dim 256",
+    "fine_args": "epochs 35, batch 32, lr 3e-4, fine_embed_dim 128, offset_lambda 5, regressor_cell all, pmc_prob 0.5, warmup epochs 1-2 at lr 1e-5",
+    "env_vars": {
+      "MP_SEED": 0,
+      "MP_NO_TEST": 1
+    },
+    "hungging_model": "<REMOTE_PATH>",
+    "pointnet": "checkpoints/pointnet_acc0.86_lr1_p256.pth"
+  },
+  "selection": {
+    "coarse": "VAL best-cell R@5 = val_acc[max(args.top_k)], strict improvement, earliest epoch",
+    "fine": "min mean VAL pose offset (calc_pose_error2 on unit-cell coords), strict improvement, earliest epoch",
+    "test": "closed during training; a single evaluation per registered chain after freeze"
+  },
+  "object_schema": {
+    "objects": "matched objects first (description order), distractors after; pad/truncate to pad_size=16",
+    "coarse_object_size": 28,
+    "pointnet_numpoints": 256,
+    "num_mentioned": 6,
+    "texts": "6 hints joined by ' '; LanguageEncoder splits sentences"
+  },
+  "fine_label_decode": {
+    "label": "offsets = [(pose_w.x - bbox_w[0])/(bbox_w[3]-bbox_w[0]), (pose_w.y - bbox_w[1])/(bbox_w[4]-bbox_w[1])]",
+    "head_output": "CrossMatch -> mlp_offsets -> [B,2] direct unit-cell position; MSE x offset_lambda=5",
+    "val_metric": "calc_pose_error2 = ||pose.pose[0:2] - output||, mean over batch",
+    "world_decode": "pred_w = bbox_w[0:2] + pos_in_cell * cell_size; cross-scene candidates set to inf",
+    "proof": "meta/check_cell_geometry.py: 1434/1434 VAL cells square (30x30 m), max|label-pose.pose| = 3.3e-16"
+  },
+  "probes": {
+    "coarse": {
+      "gate_pass": true,
+      "file": "probe/probe_coarse.json",
+      "steps": 5,
+      "losses": [
+        4.237074851989746,
+        4.126023292541504,
+        4.176015853881836,
+        4.197052955627441,
+        4.08115291595459
+      ],
+      "params_changed": 115,
+      "reload_max_abs_diff": 0.0
+    },
+    "fine": {
+      "gate_pass": true,
+      "file": "probe/probe_fine.json",
+      "steps": 5,
+      "losses": [
+        0.34362202882766724,
+        0.3500910997390747,
+        0.3453095555305481,
+        0.3276357650756836,
+        0.2832537293434143
+      ],
+      "params_changed": 171,
+      "reload_max_abs_diff": 0.0
+    }
+  },
+  "hashes": {
+    "core_code": {
+      "models/cell_retrieval.py": "78dcefb13d3eda97e1b075c45627b032b6c6e31e5d971a7504be8fee1af49d0d",
+      "models/language_encoder.py": "fc46f7ff44b2ef5ab9433e6b755ee91dda1bb800a854174d49ac5cfdf2457997",
+      "models/mamba_model.py": "2530344bf5515ed4659af2b508f6a09b817521ac5c22d969daf29f4bb4b7aca2",
+      "models/cross_matcher.py": "5cd1c6934742b218a5740ffa4b8a702a797473978f94f0e947cc265496fccc61",
+      "models/new.py": "80cd6b4584459a7bcb1bea5683c1ec89cb39637e205d7ce8d5690df8f4710adf",
+      "training/coarse.py": "225c8e3dbe4af7300a5ef5208b3d51d38237f7bfbda5ff3efdee28816f08f1c8",
+      "training/fine.py": "a0aa4359a7b56d3ffb5b2c19e4d07a4eecf7e04ef143ff5a8fb30933761b1152",
+      "training/args.py": "58cf67b16889561695bda2a9e2eb3984623282f36781ddec37c0e90ef8ba1aac",
+      "training/losses.py": "c3c1130b72f2ecc11b424c37b5dc0e7cf2fe74a82eb2932ecfcfb1980d0cd391",
+      "evaluation/utils.py": "3a71893f8db69e547e099ce26e6edd05294d5c4e84358d41562af7ae8e4fef18",
+      "evaluation/pipeline.py": "b263931a0f47c637be06b9c048496279768eb10e4df53b8d665ea51a41354ed7",
+      "dataloading/kitti360pose/poses.py": "ff0abb1dc840b1acee0a1594fdb548a5cf93e77bb55969fd7bf8c9d6c4235136",
+      "dataloading/kitti360pose/cells.py": "65302eb0799cedb250727768def66fe3ceaa9710700dee4f8ccba1860e351ba1",
+      "dataloading/kitti360pose/base.py": "99f35b020ad0a8c7f004a3318ffea34431c63a6bc582458ec5e85e1129261c0f",
+      "datapreparation/kitti360pose/utils.py": "2bdc44f7ff052bb3a0a013089df9bccc583160eb81262a14f6155a5c2e93985e"
+    },
+    "code_manifest": "meta/CODE_SHA256.txt",
+    "data_manifest": "meta/DATA_SHA256.txt",
+    "t5_large_manifest": "meta/T5LARGE_SHA256.txt",
+    "pointnet": {
+      "path": "checkpoints/pointnet_acc0.86_lr1_p256.pth",
+      "sha256": "ef63fdfc9cd10e698181efe415a873e628cf86698266f005351943030016e8e1"
+    },
+    "probe_script": {
+      "path": "probe/probe_mambaplace.py",
+      "sha256": "193682562ad7127e50c077dfcfe1986271e260fadfeaa3af35404f0b40790b0c",
+      "bytes": 15811
+    },
+    "env_build_script": "943e8e0d624387c163d2284481517c81f6e220ef99da94cfb55b61b07b9be7e8"
+  },
+  "scope": {
+    "queue": [
+      "MambaPlace x S3DIS bb0",
+      "MambaPlace x NPM3D bb0",
+      "Des4Pos x NPM3D bb0 (after B implementation verified)"
+    ],
+    "excluded": [
+      "PandaSet (C)",
+      "nuScenes (D)",
+      "FourierPlace",
+      "extra backbone seeds",
+      "third line"
+    ],
+    "test_rule": "TEST evaluated once per registered chain after freeze; prior TEST reads are historical",
+    "selection_rule": "VAL only for correctness and the pre-registered selection above"
+  },
+  "b_status": "UNVERIFIED (formal same-combo training blocked until scheduler confirms B is not running MambaPlace x KITTI)"
+}

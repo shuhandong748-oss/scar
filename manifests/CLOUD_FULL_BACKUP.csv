@@ -1,0 +1,12 @@
+﻿entry_id,category,path,purpose,recorded_bytes,recorded_files,actual_bytes,actual_files,exists,provenance,overlaps_with,overlap_note
+FB-01,V3 全量权重仓库（25 格粗/细/头 + 配置 + 归一化）,<SCAR_ROOT>\SCAR_WEIGHTS_BACKUP_20261101\repo,历史论文权重与 A/B 头全量；含 81 个物理权重文件,4448794510,81,8899315343,591,YES,"SCAR_WEIGHTS_BACKUP_20261101 (Git LFS 私库, commit c31e61ee)",,
+FB-02,D4P corrected 逐轮头（NPM3D/S3DIS s0/s1/s2 各 30 轮 + selected）,<SCAR_ROOT>\D4P_CORRECTED_FORMAL_SCAR_TRAINVAL_20261104,修正版 Des4Pos 正式 SCAR 逐轮权重、resume、FREEZE、normalization,95686831,551,95417804,534,YES,D4P_CORRECTED_FORMAL_SCAR_TRAINVAL_20261104（本地，M-35 未入 P3）,,
+FB-03,D4P corrected A 域主干全量（PandaSet + nuScenesFull）,<SCAR_ROOT>\baseline_recovery_20261102\A_FINAL_RECOVERY_20261103,"Coarse/Fine 逐轮 + resume + 报告；3,582 文件",2394032567,3582,2394032567,3582,YES,ADDENDUM_D4P_RECON_20261104.csv,,
+FB-04,D4P corrected C 域主干全量（NPM3D + S3DIS）,<SCAR_ROOT>\baseline_recovery_20261102\C_corrected_domains,Coarse/Fine 权重 + 299/408 SHA 校验；另 C_DELIVERY_20261102.tar 2.16GB,2158428160,,4316275141,714,YES,C_DELIVERY_20261102.tar sha a6dcc234…,,
+FB-05,D4P corrected KITTI 主干与头交付,<SCAR_ROOT>\baseline_recovery_20261031\corrected_kitti_s0\delivery_final_20261102,Coarse/Fine 逐轮 + verification + scar23_s0/s1/s2,950963684,112,950963684,112,YES,delivery_final_20261102,,
+FB-06,D4P corrected TEST 四域导出/特征/评价,<SCAR_ROOT>\D4P_CORRECTED_TEST_FOUR_DOMAINS_20261104,candidates/coarse_enc/test.npz/metrics + gate + markers,165244367,950,165092714,946,YES,单次 TEST 已读，勿重跑,,
+FB-07,MP 正式 SCAR 全轮头（KITTI s0/s1/s2 30 轮 + A 规则）,<SCAR_ROOT>\FORMAL_SCAR_20261103_MP_KITTI,formal B 逐轮头与 selected,90863493,264,90831179,261,YES,FORMAL_SCAR_20261103,,
+FB-08,MP×PandaSet 正式 SCAR 全轮头,<SCAR_ROOT>\FORMAL_SCAR_20261102\mambaplace_pandaset,s0-s2 全部 epoch + selected,26222148,128,26210595,127,YES,MANIFEST_FORMAL_SCAR_20261102,FB-11,同一目录树在五机归档 FB-11 中存在（同名目录在 <ARCHIVE_ROOT> 下被检出）
+FB-09,LSEL 固定头复训（10 配置 × 30 轮）,<SCAR_ROOT>\improvement_track_user_20261027\LSEL_FIXED_HEAD_20261028,B 权重来源（原 B 从未落盘时的复训副本）,118117457,601,118026606,594,YES,LSEL_FIXED_HEAD_20261028,,
+FB-10,KITTI test13 corrected 证据包,<SCAR_ROOT>\test13_kitti_test_20261103,code/logs/SHA/report; 权重在 B 机与归档,109348851,62,109311016,58,YES,test13_kitti_test_20261103,,
+FB-11,五机归档（P1–P5）,<ARCHIVE_ROOT>,"26,394 文件 / 36.57 GiB 全量恢复资产",39266738503,26394,39926286279,28009,YES,FINAL_RECEIPT_20261104.md（全部 SHA MATCH）,FB-02..FB-10 (partial),归档为恢复资产载体；与本地交付目录存在部分重复，统计时勿与 FB-02..FB-10 直接相加

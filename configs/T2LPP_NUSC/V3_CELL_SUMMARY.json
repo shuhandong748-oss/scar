@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2LPP_NUSC",
+  "method": "Text2Loc++",
+  "dataset": "NUSC",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "本地逐轮容器 ht23_t2lpp_s0.epochs.pt（30轮，含VAL指标）；A/B规则均选ep20",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_NUSC/coarse__coarse_contN_epoch20_acc0.713_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth",
+      "sha256": "7bd7e9fd3e884ac09b390dab670d6dbcd2d479f792284b6ae1503c2f613c7002",
+      "bytes": 27994974,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "20"
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_NUSC/fine__fine_contN_epoch21_offset0.1005_lr0.0003_obj-6-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth",
+      "sha256": "c1f1ec7668e6e2e4d8ec5bf27fb2a08d220d5c15825c65bc6de4039371d4ea55",
+      "bytes": 23598869,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "21"
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_NUSC/headAB__ht23_t2lpp_s0.pt",
+      "sha256": "412b0d0a4454d387cf8f883568c3ff6e753d7debb82b42c06acbfca60c59e6b4",
+      "bytes": 27780,
+      "selected_epoch": "20",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/T2LPP_NUSC/headAB__ht23_t2lpp_s0.pt",
+      "sha256": "412b0d0a4454d387cf8f883568c3ff6e753d7debb82b42c06acbfca60c59e6b4",
+      "bytes": 27780,
+      "selected_epoch": "20",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2LPP_NUSC",
+    "method": "Text2Loc++",
+    "norm_mode": "MISSING",
+    "archive_path": "",
+    "source_ref": "",
+    "source_sha256": "",
+    "archive_sha256": "",
+    "status": "MISSING",
+    "note": "No norm row in ASSET_INDEX_V2."
+  },
+  "no_test_asset_included": true,
+  "note": "纠正效率审计旧记录“B未选出”：本地逐轮容器可复算 A=B ep20。"
+}

@@ -1,0 +1,11 @@
+﻿id,scope,item,classification,detail,impact,action
+RG-01,MP×KITTI,历史 A 规则外的 B 规则头 s0/s1/s2 (原轨迹 ep5),HISTORICALLY_NEVER_SAVED,train_head_mp.py 只保存被选中的 A 轮；原 B=ep5 从未落盘,历史原轨迹的 B 选择不可复现；论文 MP×KITTI 格使用新正式轨迹 s0 ep5，不受影响,不补训；已在 MANIFEST b_origin=NEVER_SAVED
+RG-02,MP×PandaSet,历史 A/B 规则头 s0/s1/s2,HISTORICALLY_NEVER_SAVED,train_head_mp.py 仅写 A 轮；A/B 均未落盘（M-01）,历史评分器不可复现；论文格使用新正式轨迹 s0 ep2 头（已交付）,不补训；新轨迹头已绑定
+RG-03,"T2L×KITTI, T2L×S3DIS, T2LPP×KITTI, MNCL×S3DIS",原始训练轨迹的 B 规则头,HISTORICALLY_NEVER_SAVED__SUBSTITUTED_BY_RETRAINED_COPY,原 B 从未落盘；论文/B 包中的 B 来自 LSEL 固定头复训轨迹（同一 TRAIN/VAL 配置）,不能称“恢复历史 B 权重”；A/B 为同一复训轨迹内的受控比较,已在 b_origin=RETRAINED_LSEL_COPY__ORIGINAL_B_NEVER_SAVED 逐格标注
+RG-04,MNCL×PandaSet/nuScenes/NPM3D,B 规则权重,HISTORICALLY_UNPROVEN,历史单测头记 A=B；无逐轮容器证明 B 轮次,这三格按 A=B 使用，不能作为独立 A/B 证据,保持 A=B 标注，不补训
+RG-05,全部,T5-large / CLIP-ViT / MambaPlace conda 环境,EXTERNAL_REPRODUCIBLE_NOT_ARCHIVED,公共模型与可重建环境，非独有资产（M-05）,恢复需联网或缓存；加载依赖已由 pip_freeze / ENVIRONMENT 冻结,GitHub 包记录来源与版本，不打包模型本体
+RG-06,A_修正版主干,attempt1/2/3 中断权重树 (631MB+2.0GB+2.0GB),REMOTE_ONLY_INTENTIONALLY_NOT_TRANSFERRED,失败尝试，无复用价值（M-06）,无,不迁移
+RG-07,D4P corrected,C 轮 NPM3D/S3DIS 367 文件仅在本地,LOCAL_ONLY_NOT_IN_ARCHIVE,P3 归档无 d4p_trainval_20261104 目录（M-35）；本地完整且 SHA 已核,不影响恢复；下次归档窗口补入 P3,本次发布直接引用本地路径
+RG-08,D4P 历史混合实现 (41.66%),完整 argv / 启动参数,EVIDENCE_CAVEAT,7 链中 6 条严格 SHA 相等，argv 无法逐字恢复,41.66% 只能绑定到已核实的权重与缓存，不能宣称启动命令逐字复现,按 D4P_4166_PROVENANCE_20261104/WEIGHT_BINDING.csv 单独登记
+RG-09,S3DIS,历史 TEST marker 542 vs 注册 544,RESOLVED,542 为真实发布划分（67×8 + d092×6）；544 为名义值（M-36）,无；分母固定 542,见 S3DIS_542_CLOSURE.md
+RG-10,归档总索引,MASTER_ASSET_INDEX.archive_path 缺 chroot 前缀,INDEX_DEFECT_DOCUMENTED,2143 条非空路径系统性缺 root/[autodl-tmp]/ 前缀（M-34），仅 57 行已修,未修正行不能直接打开；按规则解析后可定位,本次发布对引用到的每一行重新解析并登记 resolved_path

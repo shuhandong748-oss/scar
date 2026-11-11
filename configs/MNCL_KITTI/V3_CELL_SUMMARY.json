@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MNCL_KITTI",
+  "method": "MNCL",
+  "dataset": "KITTI",
+  "formal_gate_v2": "READY_STRUCTURAL",
+  "ab_relation": "A≠B",
+  "ab_provenance": "SCAR-B 台账",
+  "b_state": "PRESENT_INDEPENDENT_B",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_KITTI/coarse__coarse.pth",
+      "sha256": "7d6a4af887be128c6b0c361a30c77ccd8c10d574689ae21372b6ca55b56c8214",
+      "bytes": 71290983,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_KITTI/fine__fine.pth",
+      "sha256": "0a1727faf5108518a83ec182ced6b0e6594f8190267c1533c22c525ea0c62dd4",
+      "bytes": 63259335,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_KITTI/headA__epoch01.pt",
+      "sha256": "946e8536d2b979e458432643863163fa9eac21fe6a9fbdfa9fbb562f75409699",
+      "bytes": 17352,
+      "selected_epoch": "1",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_INDEPENDENT_B",
+      "archive_path": "weights/MNCL_KITTI/headB__epoch25.pt",
+      "sha256": "c1ea98e2050cd3f784515cb9cb01a6dbea1cbf107a45af9edec765e2c274f7ac",
+      "bytes": 17352,
+      "selected_epoch": "25",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MNCL_KITTI",
+    "method": "MNCL",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/MNCL_KITTI/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/MNCL-SCAR-HT__KITTI360Pose-30-10__bb0__a_handoff_20261027/NORMALIZATION.json",
+    "source_sha256": "d73d2984a81fa50b76e300f3a7202dece8390696ad2919e82c3fa0fd6386f8fb",
+    "archive_sha256": "99ae2e7f7b7eaf8247dccc611622da4408ed29c7472e74e6bd530610810fe959",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "SCAR-B 台账用 T1/T4 材料化A(946e8536)/B(c1ea98e2)；包内A头2fa3a7a9亦在本地。"
+}

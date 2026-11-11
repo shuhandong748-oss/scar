@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2L_S3DIS",
+  "method": "Text2Loc",
+  "dataset": "S3DIS",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A≠B",
+  "ab_provenance": "LSEL 复训轨迹副本（原B从未落盘；A=ep25/B=ep3）",
+  "b_state": "PRESENT_INDEPENDENT_B",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_S3DIS/coarse__coarse.pth",
+      "sha256": "ce02dfd6cd5d369ca528bb425ac868c4b2cd9aa04d6cc496f5d214a9e3901e8e",
+      "bytes": 66290526,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_S3DIS/fine__fine.pth",
+      "sha256": "f2acaf14e468ad36e3ee4ca5b75d4b7dc808b633d35a3ff50003652f9bcc6438",
+      "bytes": 61633080,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_S3DIS/headA__newA_ht23_t2l_s0.pt",
+      "sha256": "1fab6971d7b595b47a20c2d9911606083f2b94042d81a278741bc6abe29d23e4",
+      "bytes": 27362,
+      "selected_epoch": "25",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_INDEPENDENT_B",
+      "archive_path": "weights/T2L_S3DIS/headB__newB_ht23_t2l_s0.pt",
+      "sha256": "5a70f197c0cc68ce171031e00ff05d9a85983ed38042a5e2b8c851ebe4c5c7aa",
+      "bytes": 27362,
+      "selected_epoch": "3",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2L_S3DIS",
+    "method": "Text2Loc",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/T2L_S3DIS/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/Text2Loc-SCAR-HT__S3DISPose-50-25-25__bb0__frozen_20261027/NORMALIZATION.json",
+    "source_sha256": "4e0f6adec00248b726441ee9a2d32154627b30e560ab017de00d906763e0c2f8",
+    "archive_sha256": "789f93895fbb1c18f2939c94cf6424cfa14d50b46d86a5028914c873c410c6e6",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "SCAR-B 台账用 LSEL 复训A(1fab6971)/B(5a70f197)；包内原A头bab087ec亦在本地。"
+}

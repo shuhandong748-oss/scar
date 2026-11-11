@@ -1,0 +1,95 @@
+{
+  "package_id": "MNCL-SCAR-HT/S3DISPose-50-25-25/bb0/frozen",
+  "created": "2026-10-27",
+  "stages": {
+    "coarse": {
+      "status": "SELECTED",
+      "epoch": 19,
+      "selection": {
+        "epoch": 19,
+        "val_R10": 0.4540441176470588,
+        "val_R1": 0.08088235294117647,
+        "val_R3": 0.17279411764705882,
+        "val_R5": 0.2702205882352941,
+        "train_loss": 4.187450408935547,
+        "epochs_run": 32
+      },
+      "epoch_source": "registry_selection",
+      "source": "B/pe/runs/R004/S3DIS/seed0/frozen_config.json",
+      "checkpoint": "<REMOTE_PATH>",
+      "applicable": true
+    },
+    "fine": {
+      "status": "SELECTED",
+      "epoch": 31,
+      "selection": {
+        "epoch": 31,
+        "val_mean_pose_offset": 0.10707446187734604,
+        "val_mean_pose_offset_unit": "room-normalised (adaptive cell size 4.0-47.0 m, median 5.9 m)",
+        "train_loss": 0.014210138826028389,
+        "train_loss_offsets": null,
+        "epochs_run": 32
+      },
+      "epoch_source": "registry_selection",
+      "source": "B/pe/runs/R004/S3DIS/seed0/frozen_config.json",
+      "checkpoint": "<REMOTE_PATH>",
+      "applicable": true
+    }
+  },
+  "heads": [
+    {
+      "head_seed": 0,
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "30315ee6944e51df7e881277afde67a5aea0d2b88da13f4425814fd95fe1b239",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 14,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 14,
+          "loss": 2.1466880800941954,
+          "train_top1": 0.518417477607727,
+          "cell_R1": 0.33639705882352944,
+          "top1_5m": 0.3235294117647059
+        }
+      }
+    },
+    {
+      "head_seed": 1,
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "a44ddb043d7697e7875aafb93a3c1678f22e31712c3a100957c16257c4168f02",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 30,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 30,
+          "loss": 1.3820625994085127,
+          "train_top1": 0.5320600271224976,
+          "cell_R1": 0.34191176470588236,
+          "top1_5m": 0.3235294117647059
+        }
+      }
+    },
+    {
+      "head_seed": 2,
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "19222f011aa9e96921993b1d643ac479c18a7df3fee1063c5edef39cce714b6d",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 30,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 30,
+          "loss": 1.3627673104547706,
+          "train_top1": 0.542974054813385,
+          "cell_R1": 0.3400735294117647,
+          "top1_5m": 0.3272058823529412
+        }
+      }
+    }
+  ]
+}

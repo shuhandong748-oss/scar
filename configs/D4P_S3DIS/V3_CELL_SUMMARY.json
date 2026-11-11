@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "D4P_S3DIS",
+  "method": "Des4Pos-v2-revised",
+  "dataset": "S3DIS",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "Des4Pos 原始轨迹头 A=ep13/B=ep13",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_S3DIS/coarse__coarse_best.pth",
+      "sha256": "e37e2d15f809abe6e6929c5983dcd66b12835ff766c08d054f33df21cd2f0c7b",
+      "bytes": 65510486,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_S3DIS/fine__fine_best.pth",
+      "sha256": "18a026e21b1e392ccef315925dde32918c5f8ed09c8488b79ff22da07c39f73a",
+      "bytes": 53727418,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_S3DIS/headAB__ht23_d4p_s3dis_s0.pt",
+      "sha256": "911650d726e657a6aa583b44b80c56fbbf97e693eb390098c0ecdda34ffd43f8",
+      "bytes": 28012,
+      "selected_epoch": "13",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/D4P_S3DIS/headAB__ht23_d4p_s3dis_s0.pt",
+      "sha256": "911650d726e657a6aa583b44b80c56fbbf97e693eb390098c0ecdda34ffd43f8",
+      "bytes": 28012,
+      "selected_epoch": "13",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "D4P_S3DIS",
+    "method": "Des4Pos-v2-revised",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/D4P_S3DIS/num_stats.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/C_WEIGHT_RECOVERY_20261101/s3dis_r060/records/num_stats.json",
+    "source_sha256": "752dcbf2bc8c9417c3f86eeb4227bd418c4b99879556a4860c80bb3fd3c7fe97",
+    "archive_sha256": "8f0c80a2c69e420cae006351c3af67eadef7519d58bf57f63ae4b47d00b6fcf8",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "S3DIS粗/细/STE只在<MACHINE>；BACKBONE_FREEZE记录完整路径与sha。"
+}

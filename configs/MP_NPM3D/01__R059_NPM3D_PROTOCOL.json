@@ -1,0 +1,269 @@
+{
+  "id": "R059-C-MAMBAPLACE-NPM3D-bb0",
+  "combination": "MambaPlace_NPM3D_bb0",
+  "submission": "C / MambaPlace x NPM3D (ParisLillePose-20-10) bb0 (domain adaptation of R059-CORE-SOURCE-READY-v1)",
+  "registered_at": "2026-10-28T14:05:00+08:00",
+  "registered_before": "any formal training step; probe results are recorded in probe/probe_{coarse,fine}.json and do not change this file",
+  "authority": {
+    "user_governing_instruction": "2026-10-28: E released both NPM3D combinations; C accepts and executes serially (governing message clause 1-4)",
+    "release_id": "E-REL-MAMBAPLACE-NPM3D-20261028",
+    "release_file": "<REMOTE_PATH>",
+    "release_sha256": "21a878afba390a172500e77e1781edffc4167bf4af3b558ec59809f21e82bfa1",
+    "acceptance_record": "<REMOTE_PATH>",
+    "acceptance_sha256": "35147ca41acf5a8659f9857f627959507b1b6ec32f3870df1c5caed50e256605",
+    "claim_record": "<REMOTE_PATH>",
+    "claim_sha256": "a80bbe525d16b8e52b131e7dd8e9aa41fff6f89159cf3fa77389ab133f77f769",
+    "note": "acceptance_sha256 / claim_sha256 above are the values recorded at acceptance time; guard.sh re-hashes both files live and refuses on drift"
+  },
+  "machine": {
+    "endpoint": "<REMOTE_HOST>",
+    "hostname": "<REMOTE_HOST>-container-a1f743bacb-ceb33c9c",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER 32760 MiB",
+    "gpu_uuid": "GPU-9565bb33-b623-63e2-f92e-991baf9003da",
+    "workdir": "<REMOTE_PATH>",
+    "env": "<REMOTE_PATH> (symlink to mambaplace_pandaset env)",
+    "env_identity": "python 3.10.22 | torch 2.5.1+cu124 | pyg 2.4.0 | transformers 4.46.3 | mamba_ssm 2.2.2 | causal_conv1d 1.4.0",
+    "sole_executor": true
+  },
+  "method": {
+    "inherited_release": "R059_CORE_SOURCE_READY_v1 (E)",
+    "repo": "https://github.com/CV4RA/MambaPlace.git",
+    "commit": "f852d9c11eb312fb801b4109f099af0a3aed7f11",
+    "paper": "arXiv 2408.15740",
+    "core_package_sha256": "67a480c4a3f87e094faf3cc7bf0927bf221ddaa96957074043ac6ec4bd532169",
+    "code_manifest": "meta/CODE_SHA256.txt",
+    "code_manifest_sha256": "789988fe124d065f6d0c49bdc812a57c90fceb5db97603548f07027de58d6c01",
+    "verified_on_C": "35/35 OK after deploy_stage1.sh; no controlled file edited by C",
+    "no_mixing": "MambaPlace release only; no Des4Pos and no legacy hybrid module is imported into this workspace"
+  },
+  "dataset": {
+    "name": "ParisLillePose-20-10",
+    "root": "<REMOTE_PATH>",
+    "tarball_sha256": "91b287639c6582aef7e574bd9ca1a4ad4aeccca73e5da435e9587600ef8814de",
+    "dataset_manifest_sha256": "6132a54031c214014511aa5592bab0d60ac673d9e31fdd14ca11e52b24f3051c",
+    "per_file_manifest_sha256": "0d8f7057ad9b34cd475b5bced015f2789f6607e34ee4e36ff206ea1fc916f8be",
+    "files_verified_on_C": "457/457 OK",
+    "splits": {
+      "train": 30,
+      "val": 32,
+      "test": 29,
+      "cells_total": 91,
+      "poses_total": 364
+    },
+    "poses": {
+      "train": 120,
+      "val": 128,
+      "test": 116
+    },
+    "per_cell": "exactly 1 cell per scene, 4 poses per cell, 3 real descriptions per pose (all matched to min_match=1; no description fabricated, min_match not lowered)",
+    "cell_size_m": 20.0,
+    "directions": "north/south/east/west/on-top (on-top preserved by upstream flip; counted in the audit)",
+    "domain_audit": {
+      "file": "probe/npm3d_domain_audit.json",
+      "passed": true,
+      "split_scope": "TRAIN/VAL only; TEST pickles were never opened"
+    }
+  },
+  "domain_adaptation": {
+    "registry": "meta/ADAPT_DOMAIN_SHA256.txt",
+    "mechanism": "adapt/shim/sitecustomize.py MetaPathFinder alias, active only when MP_DOMAIN=npm3d",
+    "aliased_modules": [
+      "datapreparation.kitti360pose.utils -> datapreparation.npm3dpose.utils",
+      "dataloading.kitti360pose.base -> dataloading.npm3dpose.base",
+      "dataloading.kitti360pose.utils -> dataloading.npm3dpose.utils",
+      "dataloading.kitti360pose.cells -> dataloading.npm3dpose.cells",
+      "dataloading.kitti360pose.poses -> dataloading.npm3dpose.poses",
+      "dataloading.kitti360pose.eval -> dataloading.npm3dpose.eval"
+    ],
+    "not_aliased": [
+      "datapreparation.kitti360pose.imports (pickle classes; stays the frozen module)"
+    ],
+    "twins_are_byte_identical_copies_of_upstream": true,
+    "twin_sha256": {
+      "dataloading/npm3dpose/base.py": "99f35b020ad0a8c7f004a3318ffea34431c63a6bc582458ec5e85e1129261c0f",
+      "dataloading/npm3dpose/utils.py": "035c9dd93c3562616c904cae6b59c13f5b374851ff3519a8385cb07ff99f7899",
+      "dataloading/npm3dpose/cells.py": "65302eb0799cedb250727768def66fe3ceaa9710700dee4f8ccba1860e351ba1",
+      "dataloading/npm3dpose/poses.py": "ff0abb1dc840b1acee0a1594fdb548a5cf93e77bb55969fd7bf8c9d6c4235136",
+      "dataloading/npm3dpose/eval.py": "d4bc58f91b2ba21f7c4d617b734f656a781bdc3fac335cc11224125eb35dd838"
+    },
+    "only_hand_written_domain_file": "datapreparation/npm3dpose/utils.py",
+    "domain_utils_sha256": "1c051b4ede496aaeb367794e76caaf53bda0f80009ebb22217910430524b1658",
+    "shim_sha256": "aeece8e1300d8f9190b8d8a9342e5753e2ee1ebaabb4f13a99668d4f2caaf539",
+    "class_vocabulary": [
+      "building",
+      "car",
+      "ground",
+      "pedestrian",
+      "pole",
+      "vegetation"
+    ],
+    "n_classes": 7,
+    "pad_slot": {
+      "name": "pad",
+      "index": 6
+    },
+    "colors": "unchanged upstream 8-colour palette; every NPM3D colour verified inside it",
+    "hint_template": "The pose is {direction} of a {color} {label}.",
+    "deviations": [
+      {
+        "id": "D-SHIM",
+        "what": "frozen literal imports resolved by a MetaPathFinder instead of editing training/evaluation files",
+        "why": "editing them breaks meta/CODE_SHA256.txt (35 controlled files)",
+        "affects_math": false
+      },
+      {
+        "id": "D-PN",
+        "what": "derived PointNet assets/pointnet_npm3d_c7_8.pth: class_classifier 22->7 re-initialised, other 62 tensors bit-identical",
+        "why": "models/object_encoder.py load_state_dict is strict and the frozen KITTI checkpoint has a 22-class head; NPM3D vocabulary is 6 declared classes + the pad slot = 7",
+        "evidence_unused": "class_pred is produced at models/pointcloud/pointnet2.py:95 and never consumed (object_encoder.py uses .features2 only)",
+        "src_sha256": "ef63fdfc9cd10e698181efe415a873e628cf86698266f005351943030016e8e1",
+        "dst_sha256": "903f55d2d44a1993220cd52980f7875ee11c494979d4cb9661bdd2499299c3ed",
+        "conversion_report_sha256": "1eb0ad698c6eda1b6ff322f259188a823c22349e897044b84617a71dc23455ca",
+        "revisitable": "yes, if any domain shows cross-domain PointNet is the bottleneck"
+      },
+      {
+        "id": "D-EVALVOCAB",
+        "what": "domain KNOWN_CLASS is list(CLASS_TO_INDEX.keys()) instead of upstream's alphabetical literal",
+        "why": "evaluation/pipeline.py builds models from KNOWN_CLASS while training uses list(CLASS_TO_INDEX.keys()); the upstream literal is inconsistent with CLASS_TO_INDEX and would index a different class-embedding row at evaluation",
+        "affects_math": "only evaluation-side embedding lookup alignment; training-time index order is unchanged"
+      },
+      {
+        "id": "D-PED-EMPTY",
+        "what": "the six-class vocabulary keeps pedestrian although TRAIN/VAL observe {building, car, ground, pole, vegetation} only (pedestrian = 29 declared objects, manifest places them in TEST)",
+        "why": "dropping a declared class would silently change the vocabulary; its class-embedding row simply receives no gradient",
+        "affects_math": "no gradient for that row; disclosed in every report"
+      },
+      {
+        "id": "D-PMC-NOOP",
+        "what": "--pmc_prob 0.5 is registered unchanged but is a structural no-op on NPM3D",
+        "why": "every NPM3D cell has 0 compass neighbours (direction/_summary.json neighbour_edges = 0); probe measured 0/4 relocations",
+        "affects_math": "no relocation can occur; recipe value kept as published"
+      }
+    ]
+  },
+  "recipe": {
+    "source": "MambaPlace README public recipe, unchanged except domain paths and folder names",
+    "shared": {
+      "dataset_flag": "K360 (frozen assert allows only S3D/K360)",
+      "use_features": [
+        "class",
+        "color",
+        "position",
+        "num"
+      ],
+      "no_pc_augment": true,
+      "fixed_embedding": true,
+      "num_mentioned": 3,
+      "pad_size": 16,
+      "object_size": 28,
+      "pointnet_numpoints": 256,
+      "pointnet_features": 2,
+      "top_k": [
+        1,
+        3,
+        5
+      ],
+      "optimizer": "adam",
+      "t5": "<REMOTE_PATH> (frozen, t5large sha recorded in meta/T5LARGE_SHA256.txt)"
+    },
+    "coarse": {
+      "batch_size": 64,
+      "coarse_embed_dim": 256,
+      "epochs": 20,
+      "learning_rate": 0.0005,
+      "lr_scheduler": "step",
+      "lr_step": 7,
+      "lr_gamma": 0.4,
+      "temperature": 0.1,
+      "ranking_loss": "contrastive",
+      "shuffle": true,
+      "iters_per_epoch": 2,
+      "total_steps": 40
+    },
+    "fine": {
+      "batch_size": 32,
+      "fine_embed_dim": 128,
+      "epochs": 35,
+      "learning_rate": 0.0003,
+      "lr_scheduler": "exponential (default; upstream num_epoch_warmup=3 rebuilds Adam+ExponentialLR at epoch 3)",
+      "regressor_cell": "all",
+      "pmc_prob": 0.5,
+      "pmc_threshold": 0.4,
+      "iters_per_epoch": 4,
+      "total_steps": 140,
+      "depends_on_coarse_checkpoint": false,
+      "note": "training/fine.py only builds CrossMatch from the data; coarse and fine are combined at evaluation time, which is why fine is still run after the coarse freeze per the registered serial order"
+    },
+    "scale_warning": "NPM3D TRAIN is small (120 poses). Step counts above are the whole of formal training; no epoch or batch is enlarged, and no extra data is added."
+  },
+  "selection": {
+    "coarse": "val_acc[max(top_k)] = VAL best-cell R@5, strict >, earliest epoch kept; every superseded checkpoint is deleted by upstream, exactly one *_acc*.pth remains",
+    "fine": "min mean VAL pose offset from training.losses.calc_pose_error2, strict <, earliest epoch kept; exactly one *offset*.pth remains",
+    "seed": "MP_SEED=0 (bb0); no additional backbone seeds",
+    "test": "TEST is closed during training (MP_NO_TEST=1); evaluation/pipeline.py never constructs TEST data. Exactly one TEST read after VAL freeze, in the SCAR/TEST stage, guarded by meta/TEST_READ_DONE."
+  },
+  "probe": {
+    "script": "adapt/scripts/probe_npm3d.py",
+    "script_sha256": "ca412e1d92ef3b07511c40801fd6025fa66e8ab9f0a9f76eb2b216b83279d5e4",
+    "design": "E's five gates: finite losses, non-zero finite grads, parameters change, save->load reproduces outputs exactly, official decode matches documented formulas",
+    "scenes": "SCENE_NAMES_TRAIN[:1] = l000 (4 poses; batch 4)",
+    "results": {
+      "coarse": {
+        "file": "probe/probe_coarse.json",
+        "sha256": "51dad4b0950bd20e86cd0f741077c811c19c4b70dd32a58e8ca01cec6c0309ee",
+        "gate_pass": true,
+        "losses": [
+          2.7598438262939453,
+          2.7408809661865234,
+          2.569918632507324,
+          2.863280773162842,
+          2.862199068069458
+        ],
+        "params_with_grad": "115/370",
+        "reload_max_abs_diff": 0.0,
+        "peak_gpu_mem_gb": 4.836,
+        "wall_s": 45.3
+      },
+      "fine": {
+        "file": "probe/probe_fine.json",
+        "sha256": "4c63e96daea01a3b906e9959749df719025332d03697cdcd6e306a5ddbee4fcc",
+        "gate_pass": true,
+        "losses": [
+          0.21461112797260284,
+          0.22747385501861572,
+          0.15484318137168884,
+          0.19359928369522095,
+          0.14873170852661133
+        ],
+        "params_with_grad": "171/396",
+        "reload_max_abs_diff": 0.0,
+        "decode": {
+          "label_vs_pose_max_abs": 0.0,
+          "official_error_mean": 0.0,
+          "world_decode_max_abs_diff": 0.0
+        },
+        "pmc_relocations": "0/4",
+        "peak_gpu_mem_gb": 4.783,
+        "wall_s": 5.0
+      }
+    }
+  },
+  "outputs": {
+    "checkpoints": "code/MambaPlace/checkpoints/NPM3D/<folder_name>/",
+    "folders": {
+      "coarse": "R059_MP_NPM3D_bb0_coarse_v1",
+      "fine": "R059_MP_NPM3D_bb0_fine_v1"
+    },
+    "run_logs": "runs/<folder_name>/{train.log,launch.json}",
+    "downstream": "SCAR stage re-runs TRAIN/VAL only to export Top25 + Fine caches, then canonical23 / TRAIN-only normalisation / three scorers / VAL freeze / one TEST read"
+  },
+  "test_history_disclosure": "NPM3D TEST was read before this combination: B (MNCL H-T) 2026-10-25 10:33; C (Text2Loc) 2026-10-25 21:11:43 superseded and 21:25:36 corrected; E (Text2Loc++ R055) exploratory. Results from this combination are exploratory evidence, not a first blind test.",
+  "hard_boundaries": [
+    "frozen R059 core only, 35/35 verified before every stage",
+    "3 real descriptions per pose; nothing fabricated; min_match not lowered",
+    "no LSEL B, no extra backbone seed, no extra data",
+    "all-epoch scorers, dual VAL metrics and normalisation parameters are saved",
+    "completed tasks are verified and reused, never retrained or re-evaluated",
+    "on a real asset or identity conflict only the affected combination stops and is reported"
+  ]
+}

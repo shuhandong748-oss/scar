@@ -1,0 +1,526 @@
+{
+  "package_id": "MNCL-SCAR-HT/nuScenesPose-50-25-25_30-10_FULL/bb0/frozen",
+  "created": "2026-10-27",
+  "inference": "(feats - mean) / std per column, then MLP 23->64->32->1 (ReLU, no output activation)",
+  "pinned_rule": "columns with TRAIN std < 1e-3 pinned to std=1.0",
+  "heads": [
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "nuScenesPose-50-25-25_30-10 (FULL)",
+      "backbone_seed": 0,
+      "head_seed": 0,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20360,
+      "mean": [
+        0.626415491104126,
+        0.5,
+        0.480021595954895,
+        0.5,
+        0.4999999403953552,
+        0.15159158408641815,
+        0.15159156918525696,
+        0.12581993639469147,
+        0.5,
+        -0.0022427428048104048,
+        -0.004062706604599953,
+        0.09224696457386017,
+        0.127860426902771,
+        0.1022728905081749,
+        0.5,
+        0.5,
+        0.4999999403953552,
+        0.30915340781211853,
+        0.47994357347488403,
+        3.0,
+        3.0,
+        2.6980230808258057,
+        2.6987476348876953
+      ],
+      "std": [
+        0.08279374241828918,
+        0.30046260356903076,
+        0.2845107316970825,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.35862454771995544,
+        0.1504349261522293,
+        0.2757696509361267,
+        0.30046260356903076,
+        0.08600907027721405,
+        0.07511231303215027,
+        0.06746447831392288,
+        0.27937692403793335,
+        0.22704365849494934,
+        0.30046260356903076,
+        0.2958173453807831,
+        0.30046260356903076,
+        0.20015491545200348,
+        0.2844804525375366,
+        1.0,
+        1.0,
+        0.8254490494728088,
+        0.8239410519599915
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 0,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 28,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 28,
+          "loss": 0.9919547713181922,
+          "train_top1": 0.7312136292457581,
+          "cell_R1": 0.6847413228552718,
+          "top1_5m": 0.560445317616241
+        }
+      },
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "59f7397789c98d61f235b13bc92c6220e25f6bda5fee87774cdb3de2e0c5fab5"
+    },
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "nuScenesPose-50-25-25_30-10 (FULL)",
+      "backbone_seed": 0,
+      "head_seed": 1,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20360,
+      "mean": [
+        0.626415491104126,
+        0.5,
+        0.480021595954895,
+        0.5,
+        0.4999999403953552,
+        0.15159158408641815,
+        0.15159156918525696,
+        0.12581993639469147,
+        0.5,
+        -0.0022427428048104048,
+        -0.004062706604599953,
+        0.09224696457386017,
+        0.127860426902771,
+        0.1022728905081749,
+        0.5,
+        0.5,
+        0.4999999403953552,
+        0.30915340781211853,
+        0.47994357347488403,
+        3.0,
+        3.0,
+        2.6980230808258057,
+        2.6987476348876953
+      ],
+      "std": [
+        0.08279374241828918,
+        0.30046260356903076,
+        0.2845107316970825,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.35862454771995544,
+        0.1504349261522293,
+        0.2757696509361267,
+        0.30046260356903076,
+        0.08600907027721405,
+        0.07511231303215027,
+        0.06746447831392288,
+        0.27937692403793335,
+        0.22704365849494934,
+        0.30046260356903076,
+        0.2958173453807831,
+        0.30046260356903076,
+        0.20015491545200348,
+        0.2844804525375366,
+        1.0,
+        1.0,
+        0.8254490494728088,
+        0.8239410519599915
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 1,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 30,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 30,
+          "loss": 0.9652825781277248,
+          "train_top1": 0.7365875244140625,
+          "cell_R1": 0.6781925343811395,
+          "top1_5m": 0.558218729535036
+        }
+      },
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "d569a25cd0b709a63be3631def5b0982b933399b14c24de11b12183ebc34f35e"
+    },
+    {
+      "method": "MNCL + SCAR(H-T)",
+      "dataset_version": "nuScenesPose-50-25-25_30-10 (FULL)",
+      "backbone_seed": 0,
+      "head_seed": 2,
+      "source_path": "<REMOTE_PATH>",
+      "bytes": 20360,
+      "mean": [
+        0.626415491104126,
+        0.5,
+        0.480021595954895,
+        0.5,
+        0.4999999403953552,
+        0.15159158408641815,
+        0.15159156918525696,
+        0.12581993639469147,
+        0.5,
+        -0.0022427428048104048,
+        -0.004062706604599953,
+        0.09224696457386017,
+        0.127860426902771,
+        0.1022728905081749,
+        0.5,
+        0.5,
+        0.4999999403953552,
+        0.30915340781211853,
+        0.47994357347488403,
+        3.0,
+        3.0,
+        2.6980230808258057,
+        2.6987476348876953
+      ],
+      "std": [
+        0.08279374241828918,
+        0.30046260356903076,
+        0.2845107316970825,
+        0.30046260356903076,
+        0.30046260356903076,
+        0.35862454771995544,
+        0.1504349261522293,
+        0.2757696509361267,
+        0.30046260356903076,
+        0.08600907027721405,
+        0.07511231303215027,
+        0.06746447831392288,
+        0.27937692403793335,
+        0.22704365849494934,
+        0.30046260356903076,
+        0.2958173453807831,
+        0.30046260356903076,
+        0.20015491545200348,
+        0.2844804525375366,
+        1.0,
+        1.0,
+        0.8254490494728088,
+        0.8239410519599915
+      ],
+      "pinned": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "feature_names": [
+        "cos",
+        "cos_rank",
+        "sp",
+        "p0_rank",
+        "p2_rank",
+        "is_tied",
+        "tied_size",
+        "sc_center",
+        "sc_center_rank",
+        "off_dx",
+        "off_dy",
+        "off_norm",
+        "sc_fine",
+        "sat_fine",
+        "sc_fine_rank",
+        "borda",
+        "c_rank",
+        "n_obj",
+        "n_matched",
+        "dist_nearest_matched",
+        "dist_centroid_matched",
+        "pred_dist_anchor",
+        "center_dist_anchor"
+      ],
+      "config": {
+        "epochs": 30,
+        "lr": 0.001,
+        "wd": 0.0001,
+        "batch": 512,
+        "hidden": [
+          64,
+          32
+        ],
+        "loss": "listwise_softmax_ce",
+        "head_seed": 2,
+        "variant": "ht23",
+        "drop_cols": [],
+        "pin_rule": "z=0 for TRAIN std < 1e-3",
+        "selection": "max VAL cell R@1, tie VAL top1@5m, then earlier epoch"
+      },
+      "state_dict_shapes": {
+        "net.0.weight": [
+          64,
+          23
+        ],
+        "net.0.bias": [
+          64
+        ],
+        "net.2.weight": [
+          32,
+          64
+        ],
+        "net.2.bias": [
+          32
+        ],
+        "net.4.weight": [
+          1,
+          32
+        ],
+        "net.4.bias": [
+          1
+        ]
+      },
+      "selection": {
+        "rule": "max VAL cell R@1, tie VAL top1@5m, earlier epoch",
+        "epoch": 28,
+        "source": "<REMOTE_PATH>",
+        "best_val": {
+          "epoch": 28,
+          "loss": 0.9792420701600488,
+          "train_top1": 0.7310344576835632,
+          "cell_R1": 0.68762278978389,
+          "top1_5m": 0.5656843483955468
+        }
+      },
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "b302de7dfb7f16aae6d7b8942c50821810c260c39c360f3d5ecdf09eeae62cf8"
+    }
+  ],
+  "ablation_heads": [
+    {
+      "file": "ablation/ht21_seed0.pt",
+      "stage": "head",
+      "head_seed": 0,
+      "bytes": 19720,
+      "sha256": "7beeede0849f84ad96220b4fada83577a8240384203c7c345f1b5f16d33c7970",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    },
+    {
+      "file": "ablation/ht21_seed1.pt",
+      "stage": "head",
+      "head_seed": 1,
+      "bytes": 19720,
+      "sha256": "ccace4d6c066466ef985ed72aeacb7328625455d64c941edff27b21413b5e45d",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    },
+    {
+      "file": "ablation/ht21_seed2.pt",
+      "stage": "head",
+      "head_seed": 2,
+      "bytes": 19720,
+      "sha256": "f2dfbdbc667322637435a599f244f49c3d7bd9a8f8814ca0a5270b510fcf0e9e",
+      "machine": "B",
+      "source_path": "<REMOTE_PATH>",
+      "role": "ablation",
+      "status": "VERIFIED_COPY"
+    }
+  ]
+}

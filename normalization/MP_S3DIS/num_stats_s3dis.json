@@ -1,0 +1,702 @@
+{
+  "source": "S3DISPose dataset_manifest.json / splits.train (TRAIN rooms only)",
+  "manifest": "<REMOTE_PATH>",
+  "manifest_sha256": "41e00444edf66f72f9e44508c2071e6dd087c0edb7c4a58c0df4b07c59267b15",
+  "split_sizes": {
+    "train": 136,
+    "val": 68,
+    "test": 68
+  },
+  "n_objects": 4872,
+  "n_rooms": 136,
+  "mean": 509.3097290640394,
+  "std": 27.7858986088798,
+  "std_ddof": 0,
+  "median": 512.0,
+  "p10": 512.0,
+  "p90": 512.0,
+  "min": 108.0,
+  "max": 512.0,
+  "per_room_objects": [
+    {
+      "room": "d228",
+      "objects": 18,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d073",
+      "objects": 35,
+      "mean_points": 501.34285714285716
+    },
+    {
+      "room": "d211",
+      "objects": 81,
+      "mean_points": 503.962962962963
+    },
+    {
+      "room": "d022",
+      "objects": 35,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d183",
+      "objects": 40,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d144",
+      "objects": 27,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d241",
+      "objects": 20,
+      "mean_points": 511.35
+    },
+    {
+      "room": "d153",
+      "objects": 11,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d234",
+      "objects": 41,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d238",
+      "objects": 24,
+      "mean_points": 507.125
+    },
+    {
+      "room": "d269",
+      "objects": 74,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d066",
+      "objects": 64,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d182",
+      "objects": 50,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d224",
+      "objects": 29,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d044",
+      "objects": 21,
+      "mean_points": 509.0952380952381
+    },
+    {
+      "room": "d013",
+      "objects": 32,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d253",
+      "objects": 41,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d135",
+      "objects": 14,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d142",
+      "objects": 39,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d064",
+      "objects": 27,
+      "mean_points": 493.8888888888889
+    },
+    {
+      "room": "d251",
+      "objects": 41,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d236",
+      "objects": 37,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d264",
+      "objects": 31,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d054",
+      "objects": 48,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d036",
+      "objects": 152,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d083",
+      "objects": 13,
+      "mean_points": 483.46153846153845
+    },
+    {
+      "room": "d052",
+      "objects": 27,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d243",
+      "objects": 19,
+      "mean_points": 503.8421052631579
+    },
+    {
+      "room": "d112",
+      "objects": 43,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d214",
+      "objects": 19,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d049",
+      "objects": 17,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d072",
+      "objects": 35,
+      "mean_points": 511.8285714285714
+    },
+    {
+      "room": "d008",
+      "objects": 11,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d248",
+      "objects": 29,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d257",
+      "objects": 27,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d048",
+      "objects": 79,
+      "mean_points": 509.60759493670884
+    },
+    {
+      "room": "d156",
+      "objects": 23,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d037",
+      "objects": 30,
+      "mean_points": 510.6666666666667
+    },
+    {
+      "room": "d033",
+      "objects": 27,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d128",
+      "objects": 115,
+      "mean_points": 511.82608695652175
+    },
+    {
+      "room": "d053",
+      "objects": 40,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d213",
+      "objects": 32,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d171",
+      "objects": 33,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d023",
+      "objects": 27,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d163",
+      "objects": 6,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d118",
+      "objects": 23,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d075",
+      "objects": 12,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d220",
+      "objects": 31,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d084",
+      "objects": 51,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d176",
+      "objects": 44,
+      "mean_points": 505.77272727272725
+    },
+    {
+      "room": "d076",
+      "objects": 19,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d029",
+      "objects": 41,
+      "mean_points": 509.8292682926829
+    },
+    {
+      "room": "d188",
+      "objects": 29,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d111",
+      "objects": 42,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d267",
+      "objects": 38,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d146",
+      "objects": 38,
+      "mean_points": 508.86842105263156
+    },
+    {
+      "room": "d130",
+      "objects": 23,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d035",
+      "objects": 53,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d148",
+      "objects": 31,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d087",
+      "objects": 24,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d120",
+      "objects": 37,
+      "mean_points": 501.1621621621622
+    },
+    {
+      "room": "d143",
+      "objects": 36,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d222",
+      "objects": 12,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d091",
+      "objects": 4,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d057",
+      "objects": 11,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d019",
+      "objects": 70,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d181",
+      "objects": 77,
+      "mean_points": 436.46753246753246
+    },
+    {
+      "room": "d038",
+      "objects": 32,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d194",
+      "objects": 31,
+      "mean_points": 508.7096774193548
+    },
+    {
+      "room": "d195",
+      "objects": 31,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d030",
+      "objects": 35,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d114",
+      "objects": 38,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d116",
+      "objects": 24,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d077",
+      "objects": 20,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d250",
+      "objects": 34,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d088",
+      "objects": 41,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d193",
+      "objects": 90,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d132",
+      "objects": 35,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d242",
+      "objects": 20,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d166",
+      "objects": 17,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d184",
+      "objects": 31,
+      "mean_points": 511.0
+    },
+    {
+      "room": "d221",
+      "objects": 33,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d258",
+      "objects": 32,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d122",
+      "objects": 19,
+      "mean_points": 501.63157894736844
+    },
+    {
+      "room": "d045",
+      "objects": 35,
+      "mean_points": 509.9428571428571
+    },
+    {
+      "room": "d074",
+      "objects": 22,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d266",
+      "objects": 28,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d042",
+      "objects": 35,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d027",
+      "objects": 25,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d021",
+      "objects": 40,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d189",
+      "objects": 24,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d113",
+      "objects": 37,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d136",
+      "objects": 44,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d106",
+      "objects": 8,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d260",
+      "objects": 34,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d009",
+      "objects": 107,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d200",
+      "objects": 23,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d198",
+      "objects": 79,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d138",
+      "objects": 44,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d051",
+      "objects": 21,
+      "mean_points": 480.42857142857144
+    },
+    {
+      "room": "d081",
+      "objects": 16,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d209",
+      "objects": 32,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d239",
+      "objects": 26,
+      "mean_points": 510.03846153846155
+    },
+    {
+      "room": "d167",
+      "objects": 14,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d235",
+      "objects": 33,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d046",
+      "objects": 249,
+      "mean_points": 504.57028112449797
+    },
+    {
+      "room": "d270",
+      "objects": 48,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d232",
+      "objects": 50,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d000",
+      "objects": 41,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d060",
+      "objects": 15,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d065",
+      "objects": 21,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d109",
+      "objects": 12,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d003",
+      "objects": 22,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d157",
+      "objects": 25,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d059",
+      "objects": 48,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d223",
+      "objects": 19,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d229",
+      "objects": 18,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d067",
+      "objects": 26,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d110",
+      "objects": 26,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d071",
+      "objects": 23,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d203",
+      "objects": 26,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d108",
+      "objects": 17,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d014",
+      "objects": 31,
+      "mean_points": 506.51612903225805
+    },
+    {
+      "room": "d024",
+      "objects": 35,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d161",
+      "objects": 26,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d026",
+      "objects": 43,
+      "mean_points": 508.48837209302326
+    },
+    {
+      "room": "d056",
+      "objects": 62,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d249",
+      "objects": 38,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d085",
+      "objects": 43,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d063",
+      "objects": 21,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d164",
+      "objects": 8,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d147",
+      "objects": 42,
+      "mean_points": 496.85714285714283
+    },
+    {
+      "room": "d103",
+      "objects": 50,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d080",
+      "objects": 17,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d078",
+      "objects": 22,
+      "mean_points": 512.0
+    },
+    {
+      "room": "d172",
+      "objects": 28,
+      "mean_points": 512.0
+    }
+  ]
+}

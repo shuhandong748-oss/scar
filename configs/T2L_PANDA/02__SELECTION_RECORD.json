@@ -1,0 +1,124 @@
+{
+  "package_id": "Text2Loc/PandaSetPose-50-25-25/bb0/a_recovered",
+  "created": "2026-10-27",
+  "stages": {
+    "coarse": {
+      "epoch": 8,
+      "rule": "official Text2Loc coarse: max VAL cell R@5 (top_k default [1,3,5], checkpoint kept/deleted by training.fine/coarse)",
+      "checkpoint": "<REMOTE_PATH>",
+      "metrics_at_epoch": {
+        "epoch": 8,
+        "train_R1": 0.265,
+        "train_R3": 0.426,
+        "train_R5": 0.504,
+        "val_R1": 0.443,
+        "val_R3": 0.683,
+        "val_R5": 0.795
+      },
+      "source": "<REMOTE_PATH>",
+      "status": "SELECTED_FROM_FROZEN_RECORD",
+      "applicable": true
+    },
+    "fine": {
+      "epoch": 7,
+      "rule": "official Text2Loc fine: min mean VAL pose-offset error (normalized in-cell distance); earliest epoch on exact ties",
+      "checkpoint": "<REMOTE_PATH>",
+      "metrics_at_epoch": {
+        "epoch": 7,
+        "train_loss": 0.038,
+        "train_offset": 0.092,
+        "val_offset": 0.11,
+        "test_offset": "nan"
+      },
+      "source": "<REMOTE_PATH>",
+      "status": "SELECTED_FROM_FROZEN_RECORD",
+      "applicable": true
+    }
+  },
+  "heads": [
+    {
+      "head_seed": 0,
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "be3a90346ce09e7b1367879f13e72bb81dbdb2811c4cccaad8165814104b3fb0",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie max top1@5m, earlier epoch",
+        "epoch": 11,
+        "key": [
+          0.4965,
+          0.432
+        ],
+        "val_cell": {
+          "R@1": 0.4965,
+          "R@2": 0.6415,
+          "R@3": 0.7175,
+          "R@5": 0.827,
+          "R@10": 0.9235,
+          "R@25": 0.9735
+        },
+        "val_loc": {
+          "top1@5m": 0.432,
+          "top3@5m": 0.6215,
+          "top5@5m": 0.7195,
+          "top10@5m": 0.8035
+        }
+      }
+    },
+    {
+      "head_seed": 1,
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "4a9d4c7515a4da55755ef52d87080c20bd72c52899b79819cb5eaee70679d964",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie max top1@5m, earlier epoch",
+        "epoch": 30,
+        "key": [
+          0.4965,
+          0.434
+        ],
+        "val_cell": {
+          "R@1": 0.4965,
+          "R@2": 0.663,
+          "R@3": 0.736,
+          "R@5": 0.843,
+          "R@10": 0.922,
+          "R@25": 0.9735
+        },
+        "val_loc": {
+          "top1@5m": 0.434,
+          "top3@5m": 0.637,
+          "top5@5m": 0.729,
+          "top10@5m": 0.8005
+        }
+      }
+    },
+    {
+      "head_seed": 2,
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "d901b7504ef39f4fc1d31e5450dc9477d95601c0baf7354ee04fa4c394addb5a",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie max top1@5m, earlier epoch",
+        "epoch": 10,
+        "key": [
+          0.49,
+          0.42
+        ],
+        "val_cell": {
+          "R@1": 0.49,
+          "R@2": 0.6345,
+          "R@3": 0.718,
+          "R@5": 0.8255,
+          "R@10": 0.925,
+          "R@25": 0.9735
+        },
+        "val_loc": {
+          "top1@5m": 0.42,
+          "top3@5m": 0.623,
+          "top5@5m": 0.717,
+          "top10@5m": 0.801
+        }
+      }
+    }
+  ]
+}

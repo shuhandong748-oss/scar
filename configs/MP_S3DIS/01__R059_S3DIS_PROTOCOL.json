@@ -1,0 +1,448 @@
+{
+  "combo_id": "R059-E-MambaPlace-S3DIS-bb0",
+  "registered_at": "2026-10-29",
+  "machine": "E (<REMOTE_HOST>, RTX 4080 SUPER 32GB)",
+  "workspace": "<REMOTE_PATH>",
+  "method": {
+    "name": "MambaPlace (CV4RA official implementation, unmodified)",
+    "commit": "f852d9c11eb312fb801b4109f099af0a3aed7f11",
+    "upstream_tree_sha256": "7a75ca162c12fb89e3284167f09a0c947eddfdfbd5987c5fbd6378fac4d0245a",
+    "core_package_sha256": "67a480c4a3f87e094faf3cc7bf0927bf221ddaa96957074043ac6ec4bd532169",
+    "controlled_files_manifest_sha256": "789988fe124d065f6d0c49bdc812a57c90fceb5db97603548f07027de58d6c01",
+    "controlled_files": 35,
+    "substitution": "none: no Text2Loc/CMMLoc fine code or weights, no published MambaPlace checkpoints"
+  },
+  "dataset": {
+    "name": "S3DISPose-50-25-25",
+    "source": "S3DIS aligned version, KITTI360Pose-compatible pack",
+    "archive": "<REMOTE_PATH>",
+    "archive_sha256": "5e6222080a20a74f6ac43a4a377bc5b7e6b713d6d9630dc2ffe633eb12001e8a",
+    "extracted": "<REMOTE_PATH>",
+    "data_manifest": "meta/S3DIS_DATA_SHA256.txt",
+    "splits": {
+      "train": 136,
+      "val": 68,
+      "test": 68
+    },
+    "queries": {
+      "train": 1084,
+      "val": 544,
+      "test": 542
+    },
+    "cells": {
+      "train": 136,
+      "val": 68,
+      "test": 68
+    },
+    "cell_geometry": "one cell per complete room; cell_size = max bbox edge; XY footprint is square (x_ext/y_ext = 1.0 +/- 5e-7 over all TRAIN cells); cell_size 4.0-47.03 m",
+    "num_mentioned": 4,
+    "queries_per_room": 8,
+    "classes": [
+      "beam",
+      "board",
+      "bookcase",
+      "ceiling",
+      "chair",
+      "clutter",
+      "column",
+      "door",
+      "floor",
+      "sofa",
+      "stairs",
+      "table",
+      "wall",
+      "window"
+    ],
+    "all_descriptions_matched": true,
+    "room_leakage": "none (rooms are the split unit)"
+  },
+  "adaptation": {
+    "AD-1": "CLASS_TO_INDEX replaced in place by 14 S3DIS classes (alphabetical 0..13) + structural 'pad' (14); KNOWN_CLASS rebound; fail-closed scan of all pickles (unknown label/colour/direction/bad pose -> SystemExit)",
+    "AD-2": "SCENE_NAMES_TRAIN/VAL/TEST from dataset_manifest.json (136/68/68)",
+    "AD-3": "ObjectEncoder.num_mean/num_std replaced by TRAIN-only object-point-count statistics (mean 509.3097, std 27.7859, ddof=0, n=4872 objects); core KITTI values 1826.68/2516.89 would otherwise be applied. NOTE: 86.6% of TRAIN objects are capped at 512 points, so the num feature is near-degenerate.",
+    "AD-4": "PointNet2 class head projected 22 -> 15 rows (first 15 rows kept); encoder tensors bit-identical (max_abs_diff = 0 over 64 tensors); the class head is unused by MambaPlace (only features2 is consumed). Source sha ef63fdfc..., derived sha 2261c90f...",
+    "core_files_modified": "none (35/35 manifest verified before every launch)",
+    "inert_recipe_flag": "--pmc_prob 0.5 is kept for recipe fidelity but is inert on this dataset: every direction map value is null (one cell per room); measured 0/136 non-null targets and 0/96 sampled cell changes"
+  },
+  "deviations": {
+    "DEV-1": {
+      "what": "coarse batch_size 64 -> 32 (all other coarse hyperparameters unchanged, including lr 5e-4, step LR 7/0.4, temperature 0.1, epochs 20)",
+      "why": "the published batch 64 does not fit in 32 GiB on this dataset: formal run R059_MP_S3DIS_bb0_coarse_v1 died with CUDA OOM (30.65 GiB allocated by PyTorch, 29.69 MiB free) after 31 s, in the first epoch's first PointNet2 forward",
+      "root_cause": "the coarse loader encodes every object of every cell in the batch (batch_object_points over cell.objects, no pad_size cap; only the fine path caps at 16). S3DIS 'cells' are whole rooms: TRAIN mean 35.8 objects/cell, p90 52, max 249, so a 64-cell batch carries ~2293 objects (worst case 3321) versus KITTI's few-hundred-object 30 m cells. Upstream also enables torch.autograd.set_detect_anomaly(True), which inflates activation memory; kept as-is (core unmodified)",
+      "measurement": "probe/probe_coarse_mem.py reproduces one exact formal coarse step (same dataset/model/ContrastiveLoss/Adam/anomaly mode). b32: peak 16.876 GiB alloc / 17.305 GiB reserved over 3 steps, 1.5 s/step steady state. b48: 24.278 -> 25.712 GiB peak over 3 steps, i.e. already only ~5 GiB of headroom and a worst-case (top-48 rooms, 2781 objects) batch is projected to exceed 31.48 GiB. b64 is the observed OOM",
+      "choice": "32 chosen for headroom (worst-case top-32 rooms = 2165 objects, projected ~28 GiB < 31.48 GiB) so a 20-epoch run cannot die mid-training on an unlucky room mix",
+      "side_effects": "in-batch contrastive negatives per query drop from 63 to 31; lr is NOT rescaled (deliberate: changing one thing)",
+      "failed_artifact": "runs/FAILED_R059_MP_S3DIS_bb0_coarse_v1_OOM/{train.log,exit.txt,launch.json}",
+      "formal_run": "runs/R059_MP_S3DIS_bb0_coarse_v2 (folder R059_MP_S3DIS_bb0_coarse_v2)"
+    }
+  },
+  "recipe": {
+    "coarse": "batch 32 (DEV-1; published value 64 does not fit this dataset), lr 5e-4, Adam, step LR (step 7, gamma 0.4), temperature 0.1, contrastive, use_features class/color/position/num, no_pc_augment, fixed_embedding, epochs 20, num_mentioned 4, pad_size 16",
+    "fine": "batch 32, lr 3e-4, Adam (warmup epochs 1-2 at 1e-5), regressor_cell all, pmc_prob 0.5 (inert), no_pc_augment, fixed_embedding, epochs 35, num_mentioned 4, pad_size 16",
+    "seed": 0,
+    "test_during_training": "closed (MP_NO_TEST=1)"
+  },
+  "selection": {
+    "coarse": "VAL best-cell R@5, strict >, earliest epoch",
+    "fine": "minimum mean VAL pose offset (training.losses.calc_pose_error2), strict <, earliest epoch"
+  },
+  "post_chain": {
+    "pool": "K=25 from the split's own cells (68 cells per split, so K=25 covers 37% of the library)",
+    "features": "canonical23",
+    "normalisation": "TRAIN valid-list mean/std only",
+    "heads": "SCAR-A, seeds 0/1/2, 30 epochs each, head0 fixed a priori",
+    "lsel_b": "not included in this round"
+  },
+  "reporting": {
+    "denominator": "all queries in the split, including queries whose Top-25 candidates do not cover the GT cell",
+    "metrics": [
+      "cell R@1",
+      "cell R@5",
+      "cell R@25",
+      "Top-1@5m",
+      "Top-5@5m"
+    ],
+    "comparisons": [
+      "original coarse order",
+      "presence",
+      "C-Borda",
+      "sat_fine",
+      "SCAR"
+    ],
+    "ci": "cluster bootstrap over room (scene) clusters",
+    "min_match": "4 (unchanged); with num_mentioned=4 this means every query token must be present in a candidate; the rate at which the gate is inactive is reported separately from the 23-dim n_matched feature",
+    "negative_results": "kept verbatim"
+  },
+  "test_policy": "TEST is read exactly once after the VAL freeze; no re-runs, no extra evaluations",
+  "runs": {
+    "coarse": {
+      "folder": "R059_MP_S3DIS_bb0_coarse_v2",
+      "epochs_logged": "20/20",
+      "exit": "exit=0",
+      "finished_local": "2026-10-29T11:52:33+08:00",
+      "selection_rule": "VAL best-cell R@5, strict >, earliest epoch",
+      "selected_epoch": 11,
+      "selected_val": {
+        "R@1": 0.101,
+        "R@3": 0.243,
+        "R@5": 0.344
+      },
+      "val_curve_note": "epoch 20 VAL 1/3/5 = 0.091/0.216/0.318; epoch 18 = 0.097/0.211/0.314; full curve in train.log",
+      "ckpt": "coarse_contN_epoch11_acc0.344_ecl0_eco0_p256_npa1_loss-contrastive_f-class-color-position-num.pth",
+      "ckpt_bytes": 128043570,
+      "ckpt_sha256": "9ff33ebc93ef2135e25aecd72cb6b15a19b25a3ad5e3b25912d598b094bf2d2f",
+      "train_log_sha256": "c7c1b8438ff6e531fdd527b7aa0381dc2f602b9038fa409d247a532c9867ff51",
+      "train_val_gap": "train R@5 0.91 vs VAL R@5 0.344 at selection: small data (136 rooms) plus domain shift; reported, not corrected"
+    },
+    "fine": {
+      "folder": "R059_MP_S3DIS_bb0_fine_v1",
+      "epochs_logged": "35/35",
+      "exit": "exit=0",
+      "finished_local": "2026-10-29T12:20-12:24+08:00",
+      "selection_rule": "min mean VAL pose offset, strict <, earliest epoch",
+      "selected_epoch": 32,
+      "selected_val_offset_m": 0.071,
+      "selection_caveat": "the trainer compares raw offsets and formats the filename to 3 decimals; epochs 22 and 32 both print 0.071 and the surviving file is epoch 32, so the raw VAL offset of epoch 32 is strictly below that of epoch 22. Earlier best files are deleted by the official trainer, so exact raw values cannot be re-derived from disk; rule and surviving file recorded as-is, no post-hoc re-selection",
+      "val_curve_note": "epoch 19 0.076, 22 0.071, 32 0.071, 35 0.075; train offset 0.048 at epoch 35 (train/VAL gap 0.048 vs 0.075)",
+      "ckpt": "fine_contN_epoch32_offset0.071_lr0.0003_obj-4-16_ecl0_eco0_p256_npa1_f-class-color-position-num.pth",
+      "ckpt_bytes": 115742714,
+      "ckpt_sha256": "97d8f535aad3d889c8c655c393656aaedc6a43ba393888d50a6b89437e2259dd",
+      "train_log_sha256": "e53ca9c926387550dd282dba1b87d01d68be1f34561493e9e2d45055e30c6179"
+    }
+  },
+  "ports": {
+    "source": "mambaplace_kitti_selftrain/post (byte-identical vendor scripts)",
+    "P-1": "common_mp.py rewritten for S3DISPose (paths, manifest-driven scenes, adapter install, display names)",
+    "P-2": "make_candidates.py: close-cell accuracy uses per-candidate cell_size; the official scalar rule is kept only for the replay assertion",
+    "P-3": "export_coarse/fine: num_mentioned=4, inference batch 32",
+    "P-4": "eval_head/freeze_manifest/train_head/run_pipeline/run_test: protocol id, dataset, display name",
+    "P-5": "reporting caveats (all-query denominator, K=25 over 68 cells, min_match=4 gate vs 23-dim n_matched, label structure)",
+    "P-6": "validate_export.py scene tokenizer: KITTI split('_')[-2] raises IndexError on S3DIS room ids ('d228'); patched to 'parts[-2] if len(parts)>=3 else scene_name' after the first train validation crashed fail-closed at check 43/44 with the previous 42 checks PASS. No exported value changed",
+    "P-7": "room_cluster_ci.py added (reporting only): same statistic/resampling/seed (2000, 123) as eval_head, cluster unit = room (68 rooms; 8 queries/room on VAL, 6 or 8 on TEST)",
+    "caveat": "vendor sha256 of common.py/features_fix.py/sa_geom.py identical to the KITTI chain"
+  },
+  "results_val": {
+    "split": "val",
+    "n_queries": 544,
+    "n_rooms": 68,
+    "queries_per_room": 8,
+    "denominator": "all 544 queries; a query whose GT cell is not in its Top-25 pool counts as a miss",
+    "valid_lists": 399,
+    "empty_lists": 145,
+    "positives_total": 399,
+    "positives_per_valid_list": 1.0,
+    "gt_in_pool_frac": 0.7647058823529411,
+    "note": "17 of the 416 covered lists have no positive because the candidate's own self-trained-Fine prediction is >5 m from the GT pose; same-room candidates are at most 1 by construction",
+    "point_estimates_cell_R1": {
+      "text2loc": 0.1048,
+      "presence": 0.2408,
+      "c_borda": 0.318,
+      "sat_fine": 0.3474,
+      "ht23_cmm_s0": 0.3713,
+      "ht23_cmm_s1": 0.375,
+      "ht23_cmm_s2": 0.375
+    },
+    "point_estimates_top1_5m": {
+      "text2loc": 0.0974,
+      "presence": 0.2261,
+      "c_borda": 0.307,
+      "sat_fine": 0.3364,
+      "ht23_cmm_s0": 0.3603,
+      "ht23_cmm_s1": 0.3676,
+      "ht23_cmm_s2": 0.3603
+    },
+    "head0_vs": {
+      "text2loc": {
+        "cell_R1": [
+          0.2665,
+          0.2243,
+          0.307,
+          true
+        ],
+        "top1_5m": [
+          0.2629,
+          0.2224,
+          0.3033,
+          true
+        ]
+      },
+      "presence": {
+        "cell_R1": [
+          0.1305,
+          0.0955,
+          0.171,
+          true
+        ],
+        "top1_5m": [
+          0.1342,
+          0.0993,
+          0.1728,
+          true
+        ]
+      },
+      "c_borda": {
+        "cell_R1": [
+          0.0533,
+          0.0165,
+          0.0919,
+          true
+        ],
+        "top1_5m": [
+          0.0533,
+          0.0165,
+          0.0919,
+          true
+        ],
+        "ci_unit": "room"
+      },
+      "sat_fine": {
+        "cell_R1": [
+          0.0239,
+          -0.0037,
+          0.0515,
+          false
+        ],
+        "top1_5m": [
+          0.0239,
+          -0.0037,
+          0.0515,
+          false
+        ],
+        "room_ci": {
+          "cell_R1": [
+            0.0239,
+            -0.0018,
+            0.0478,
+            false
+          ],
+          "top1_5m": [
+            0.0239,
+            -0.0018,
+            0.0478,
+            false
+          ]
+        }
+      }
+    },
+    "delta_ci_format": "[delta, ci_low, ci_high, ci_excludes_zero]; pose-cluster CI unless ci_unit says otherwise",
+    "verdict": {
+      "beats_text2loc_by_CI": true,
+      "beats_presence_by_CI": true,
+      "beats_sat_fine_by_CI": false
+    },
+    "artifacts": {
+      "metrics_sha256_prefix": "7c1df4b0948a40bb",
+      "room_ci_sha256_prefix": "c85c78bb1e796741",
+      "verify": "VERIFY.json PASS (45 comparisons recomputed, 68 per-scene, 147 csv cells)"
+    }
+  },
+  "results_test": {
+    "split": "test",
+    "n_queries": 542,
+    "n_rooms": 68,
+    "queries_per_room": "6 or 8",
+    "single_read": "runs/eval_test/test_one_shot.json written by eval_head.py; re-running is refused",
+    "denominator": "all 542 queries",
+    "point_estimates_cell_R1": {
+      "text2loc": 0.1347,
+      "presence": 0.3192,
+      "c_borda": 0.3708,
+      "sat_fine": 0.393,
+      "ht23_cmm_s0": 0.4225,
+      "ht23_cmm_s1": 0.4059,
+      "ht23_cmm_s2": 0.4336
+    },
+    "point_estimates_top1_5m": {
+      "text2loc": 0.1199,
+      "presence": 0.2952,
+      "c_borda": 0.3542,
+      "sat_fine": 0.3745,
+      "ht23_cmm_s0": 0.4077,
+      "ht23_cmm_s1": 0.3911,
+      "ht23_cmm_s2": 0.4151
+    },
+    "head0_vs": {
+      "text2loc": {
+        "cell_R1": [
+          0.2878,
+          0.2435,
+          0.3321,
+          true
+        ],
+        "top1_5m": [
+          0.2878,
+          0.2435,
+          0.3321,
+          true
+        ],
+        "room_ci": {
+          "cell_R1": [
+            0.2878,
+            0.2132,
+            0.3616,
+            true
+          ],
+          "top1_5m": [
+            0.2878,
+            0.2206,
+            0.3574,
+            true
+          ]
+        }
+      },
+      "presence": {
+        "cell_R1": [
+          0.1033,
+          0.0627,
+          0.1439,
+          true
+        ],
+        "top1_5m": [
+          0.1125,
+          0.072,
+          0.1513,
+          true
+        ],
+        "room_ci": {
+          "cell_R1": [
+            0.1033,
+            0.0446,
+            0.1605,
+            true
+          ],
+          "top1_5m": [
+            0.1125,
+            0.0625,
+            0.1667,
+            true
+          ]
+        }
+      },
+      "c_borda": {
+        "cell_R1": [
+          0.0517,
+          0.0,
+          0.0923,
+          true
+        ],
+        "top1_5m": [
+          0.0535,
+          0.0015,
+          0.0996,
+          true
+        ],
+        "room_ci": {
+          "cell_R1": [
+            0.0517,
+            0.0147,
+            0.0948,
+            true
+          ],
+          "top1_5m": [
+            0.0535,
+            0.0167,
+            0.0978,
+            true
+          ]
+        }
+      },
+      "sat_fine": {
+        "cell_R1": [
+          0.0295,
+          -5e-05,
+          0.059,
+          false
+        ],
+        "top1_5m": [
+          0.0332,
+          0.0037,
+          0.0627,
+          true
+        ],
+        "top5_5m": [
+          0.0258,
+          0.0055,
+          0.0461,
+          true
+        ],
+        "room_ci": {
+          "cell_R1": [
+            0.0295,
+            -0.0018,
+            0.0648,
+            false
+          ],
+          "top1_5m": [
+            0.0332,
+            0.0018,
+            0.0683,
+            true
+          ],
+          "top5_5m": [
+            0.0258,
+            0.0,
+            0.0537,
+            false
+          ]
+        }
+      }
+    },
+    "verdict": {
+      "beats_text2loc_by_CI": true,
+      "beats_presence_by_CI": true,
+      "beats_sat_fine_by_CI": true,
+      "scope": "top1@5m under both CIs; cell R@1 is +2.95pp with both CIs including 0, so cell retrieval is NOT established. Single exploratory read on seed0 (head0 fixed a priori); seeds 1/2 are not used to claim a win"
+    },
+    "artifacts": {
+      "metrics_sha256_prefix": "3f083537e06d552c",
+      "room_ci_sha256_prefix": "e9aec2a218c04a28",
+      "verify": "VERIFY.json PASS",
+      "validation": "VALIDATE_TEST PASS"
+    }
+  },
+  "freeze": {
+    "val": "runs/FREEZE_VAL_2026-10-29T070928Z.json (+.sha256, 65 files) written before TEST",
+    "test": "runs/FREEZE_TEST_2026-10-29T072046Z.json (+.sha256, 83 files) written after the single TEST read, for delivery integrity only"
+  },
+  "code_key_note": "display names: text2loc = 'MambaPlace 原始排序', ht23_cmm_s* = 'SCAR-A 学习头 head0/1/2', sat_fine = '共享 MambaPlace Fine 打分'. The code keys text2loc/ht23_cmm_* are historical and carry no backbone claim."
+}

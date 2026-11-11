@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "D4P_KITTI",
+  "method": "Des4Pos-v2-revised",
+  "dataset": "KITTI",
+  "formal_gate_v2": "PENDING_ACCEPTANCE",
+  "ab_relation": "A≠B",
+  "ab_provenance": "Des4Pos 原始轨迹头 A=ep1/B=ep8",
+  "b_state": "PRESENT_INDEPENDENT_B",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_KITTI/coarse__coarse_best.pth",
+      "sha256": "9da5b43f70dd13768e86039db4750322a5faed2598ea69ea3c1de40bac4107c2",
+      "bytes": 65517846,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_KITTI/fine__fine_best.pth",
+      "sha256": "2ae653ad78fc286044875511ce3a37320bfa6d2bb74389e44c2a5af15dc7f1f8",
+      "bytes": 53730682,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/D4P_KITTI/headA__ht23_s0.pt",
+      "sha256": "be142ebf663b409e8b5656ce48afbcf223bccbc258156129e7570dd576f6fd8a",
+      "bytes": 25288,
+      "selected_epoch": "1",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_INDEPENDENT_B",
+      "archive_path": "weights/D4P_KITTI/headB__ep08.pt",
+      "sha256": "59772d832e8774f4fd3d07626abc5cb74dc45dc279818359c4d8782fdb9d0a7d",
+      "bytes": 17898,
+      "selected_epoch": "8",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "D4P_KITTI",
+    "method": "Des4Pos-v2-revised",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/D4P_KITTI/num_stats.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/B_KITTI_ASSET_RECOVERY_20261030/metadata/num_stats.json",
+    "source_sha256": "29ed84c63d2af4af495fe4c2ef7917a8afe82923293da433e37f17317d5f9182",
+    "archive_sha256": "29ed84c63d2af4af495fe4c2ef7917a8afe82923293da433e37f17317d5f9182",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "KITTI粗/细/STE只在<MACHINE>；FREEZE记录完整路径与sha。"
+}

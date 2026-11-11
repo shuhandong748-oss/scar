@@ -1,0 +1,20 @@
+{
+  "protocol": "R054-NUSCENES-T2LPP-TARGET-HEAD-v1",
+  "frozen_at": "2026-10-28T11:01:08+0800",
+  "heads": {
+    "ht23_t2lpp_s0.epochs.pt": "0a043958e2fd458d624b88e3723f40f63f938736717fe59fafdeffd326d6241f",
+    "ht23_t2lpp_s0.pt": "412b0d0a4454d387cf8f883568c3ff6e753d7debb82b42c06acbfca60c59e6b4",
+    "ht23_t2lpp_s1.epochs.pt": "f620fecc71900dca715731d7d5c7433ee0c20fe1ebf4f797771bf91d310c98e9",
+    "ht23_t2lpp_s1.pt": "74f638b33924800d4b472b5448bd96e187dc76d15fe94ace60e79761d0268822",
+    "ht23_t2lpp_s2.epochs.pt": "9018991ccc843d150b903cfb13edb7523d8d445f3a63b1ff6abc1ebe6c91e083",
+    "ht23_t2lpp_s2.pt": "40a900a6cc25cd3bd6227caa22977d996a292e4b23474d7d9711edb0c2cb16fe"
+  },
+  "features_train_sha256": "4bb8c58da809b7933097e3406c2862912bce219407bdac9209a1392002cf148b",
+  "features_val_sha256": "22417e8ec9265ab9fe2cad046a67fd1f823bb78063493b57d1649c1b35d43b33",
+  "backbone_selection_sha256": "2f91fb4b875129f6d0fab1a882687defe302bae88bbb93dde0b8b50218a713b5",
+  "codehashes_sha256": "86fcd8ea5c64c294eaa19c87ea93230b795bbdd50e49c40054f0703eb7e94f8e",
+  "gate_features_sha256": "435939a4ae970f7417a572dc4c5219b9f3fcca78b1450f8a755ad676fa798405",
+  "primary_head": "ht23_t2lpp_s0.pt",
+  "selection": "max VAL cell R@1, tie max VAL Top-1@5m, then earliest epoch",
+  "test_policy": "single registered read after this freeze"
+}

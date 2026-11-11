@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2L_PANDA",
+  "method": "Text2Loc",
+  "dataset": "PANDA",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "历史单测头 A=B（ep11）",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_PANDA/coarse__coarse.pth",
+      "sha256": "fb129473945428683fee2887ae94259ae9c96e8b51154fc88542c2a6d1a6fb0c",
+      "bytes": 66292393,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_PANDA/fine__fine.pth",
+      "sha256": "e5d96c9f540948a3a2fc8e3ab352a3d29798bcdbcbb609c885c69d9543c36b95",
+      "bytes": 61634395,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2L_PANDA/headAB__head_seed0_ht23.pt",
+      "sha256": "be3a90346ce09e7b1367879f13e72bb81dbdb2811c4cccaad8165814104b3fb0",
+      "bytes": 27312,
+      "selected_epoch": "11",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/T2L_PANDA/headAB__head_seed0_ht23.pt",
+      "sha256": "be3a90346ce09e7b1367879f13e72bb81dbdb2811c4cccaad8165814104b3fb0",
+      "bytes": 27312,
+      "selected_epoch": "11",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2L_PANDA",
+    "method": "Text2Loc",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/T2L_PANDA/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/Text2Loc__PandaSetPose-50-25-25__bb0__a_recovered_20261027/NORMALIZATION.json",
+    "source_sha256": "1bd43fc27a2ed49cad47898caebcbb2fb8e7ba9cbb7994305411625fa92af2dd",
+    "archive_sha256": "c5e3ad0253692a08c8db97dceab3b5308bfad9361097050f23d646ff51fd5c8f",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": ""
+}

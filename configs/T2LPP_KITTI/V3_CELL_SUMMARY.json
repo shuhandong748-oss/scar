@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "T2LPP_KITTI",
+  "method": "Text2Loc++",
+  "dataset": "KITTI",
+  "formal_gate_v2": "READY_STRUCTURAL",
+  "ab_relation": "A≠B",
+  "ab_provenance": "LSEL 复训轨迹副本（原B从未落盘；A=ep1/B=ep7）",
+  "b_state": "PRESENT_INDEPENDENT_B",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_KITTI/coarse__coarse.pth",
+      "sha256": "a715ffd674fc44ecde0fcbe3b6b2acc0faa5d0122dd609c2059f25244c9f9cd6",
+      "bytes": 27989343,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_KITTI/fine__fine.pth",
+      "sha256": "76ea41d56037daf8732931846f059bb35ad0e1d58ccf010774e75e75a05f936f",
+      "bytes": 23580879,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/T2LPP_KITTI/headA__newA_ht23_t2lpp_s0.pt",
+      "sha256": "dc7a8dcc8ea902eb42f50423528f5fe0059cda7f315019183e26295270fa97c2",
+      "bytes": 27830,
+      "selected_epoch": "1",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_INDEPENDENT_B",
+      "archive_path": "weights/T2LPP_KITTI/headB__newB_ht23_t2lpp_s0.pt",
+      "sha256": "9540032260d1a0cdf5ea77357cda82e106ba76eec141e02afbca1b3281074300",
+      "bytes": 27830,
+      "selected_epoch": "7",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "T2LPP_KITTI",
+    "method": "Text2Loc++",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/T2LPP_KITTI/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/Text2LocPP-SCAR-HT__KITTI360Pose-30-10__bb0__a_handoff_20261027/NORMALIZATION.json",
+    "source_sha256": "c19e9d2f21fe2441235bdfdb70e86400258a1a72a72063186b0e7391a54e1c47",
+    "archive_sha256": "7496689f17b0f9848314f5683b20bcd5ad8126830735501aecb42562ad9bceb8",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "SCAR-B 台账用 LSEL 复训A(dc7a8dcc)/B(95400322)；包内原A头5b228ece亦在本地。"
+}

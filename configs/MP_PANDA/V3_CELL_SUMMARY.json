@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MP_PANDA",
+  "method": "MambaPlace",
+  "dataset": "PANDA",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A/B均不可得（B从未落盘）",
+  "ab_provenance": "FREEZE.json 记录A头s0(ep3)/s1/s2及逐轮history；代码 train_head_mp.py 仅保存A轮",
+  "b_state": "MISSING",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_PANDA/coarse__coarse_best.pth",
+      "sha256": "be5b53c4f0ba463fdea84e354aa9540a1e58dae35d4c2fc6a87a8c981d06f9c2",
+      "bytes": 128045388,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_PANDA/fine__fine_best.pth",
+      "sha256": "be7422f4ac348a9655ebd86ef3c8c31579b36662a566d6d0b65925047628ad10",
+      "bytes": 115744250,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_PANDA/headA__ht23_mp_s0.pt",
+      "sha256": "cc40ea6b7543953337d716e2250aff3beb6e88e779247552e138260ad3dbf939",
+      "bytes": 27622,
+      "selected_epoch": "3",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "MISSING",
+      "archive_path": "",
+      "sha256": "",
+      "bytes": "",
+      "selected_epoch": "2",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "PARTIAL",
+  "architecture_config_evidence": "FREEZE record gives head contract/backbone commit; full backbone hyperparameters not in a dedicated config.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MP_PANDA",
+    "method": "MambaPlace",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/MP_PANDA/DATA_STATS.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/C_WEIGHT_RECOVERY_20261101/mambaplace_pandaset/meta/DATA_STATS.json",
+    "source_sha256": "2175c499a4a24141213a69f77f8bcb6650c710a008e6f405b772a888f2e284ab",
+    "archive_sha256": "ca19d1a453a61caa2cf2cc45da551494eb07b877296d765985545cf0bf119524",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "纠正旧记录“不可枚举”：FREEZE.json已给出粗细权重、三个A头与逐轮history的远端路径和sha。"
+}

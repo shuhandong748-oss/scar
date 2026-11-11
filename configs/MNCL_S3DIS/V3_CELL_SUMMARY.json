@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MNCL_S3DIS",
+  "method": "MNCL",
+  "dataset": "S3DIS",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A≠B",
+  "ab_provenance": "LSEL 复训轨迹副本（原B从未落盘；A=ep14/B=ep11）",
+  "b_state": "PRESENT_INDEPENDENT_B",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_S3DIS/coarse__coarse.pth",
+      "sha256": "a1d8029cfb3bbac165b118ff50adf8147958e874b117d3e862c3b267b30d778f",
+      "bytes": 213670548,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_S3DIS/fine__fine.pth",
+      "sha256": "a2ff7414e93fe0220f46d785003570d6f94daadb41d9bb8beb83f04a8cbd5f7b",
+      "bytes": 186550010,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": ""
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MNCL_S3DIS/headA__newA_ht23_s0.pt",
+      "sha256": "b5ef1bb54cab543f73fd4db1d1e1220bee9a585b88c5e3943d5764371a6baef5",
+      "bytes": 20666,
+      "selected_epoch": "14",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_INDEPENDENT_B",
+      "archive_path": "weights/MNCL_S3DIS/headB__newB_ht23_s0.pt",
+      "sha256": "f8b782b3bb595859706a1aab106a90f906af29028df8b5792bff27d88e951034",
+      "bytes": 20666,
+      "selected_epoch": "11",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "ABSENT_LOCAL",
+  "architecture_config_evidence": "Only selection/environment records are local; vendor architecture source is not part of this backup.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MNCL_S3DIS",
+    "method": "MNCL",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/MNCL_S3DIS/NORMALIZATION.json",
+    "source_ref": "SCAR_ASSET_BACKUP/20261027/packages_v2/MNCL-SCAR-HT__S3DISPose-50-25-25__bb0__frozen_20261027/NORMALIZATION.json",
+    "source_sha256": "be663e00c0fc86314817a2ca26f6cbda4eb560475baf28f0fd27c389ebfb82fb",
+    "archive_sha256": "cba77b4adf044c876c6382068f7c3f5d1034cb2db3fbef0f178d5fb1020e9088",
+    "status": "VERIFIED",
+    "note": "Separate normalization file included."
+  },
+  "no_test_asset_included": true,
+  "note": "SCAR-B 台账用 LSEL 复训A(b5ef1bb5)/B(f8b782b3)；包内原A头30315ee6亦在本地。"
+}

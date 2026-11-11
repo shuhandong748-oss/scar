@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MP_KITTI",
+  "method": "MambaPlace",
+  "dataset": "KITTI",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "B不可得（原B从未落盘）",
+  "ab_provenance": "A头=原best；代码 train_head.py 只保存被选中的A轮，B=ep5从未写出",
+  "b_state": "MISSING",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_KITTI/coarse__coarse_epoch7_acc0.648.pth",
+      "sha256": "63f0a9646f68996a5410a17c28bb132f5072a1b79deab4885a1dcccccad1ca48",
+      "bytes": 128057676,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "7"
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_KITTI/fine__fine_epoch23_offset0.095.pth",
+      "sha256": "138b2ad8d6437b9a86892df0802e189d1c4ba691099e9f131c0f006ba445c4ae",
+      "bytes": 115753466,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "23"
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_KITTI/headA__ht23_cmm_s0.pt",
+      "sha256": "2733906debb79ccd1ca6feb446dbb319d561b19abb76813ed68434880f8d86f6",
+      "bytes": 27760,
+      "selected_epoch": "1",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "MISSING",
+      "archive_path": "",
+      "sha256": "",
+      "bytes": "",
+      "selected_epoch": "5",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "PARTIAL",
+  "architecture_config_evidence": "FREEZE record gives head contract/backbone commit; full backbone hyperparameters not in a dedicated config.",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MP_KITTI",
+    "method": "MambaPlace",
+    "norm_mode": "MISSING",
+    "archive_path": "",
+    "source_ref": "",
+    "source_sha256": "",
+    "archive_sha256": "",
+    "status": "MISSING",
+    "note": "No norm row in ASSET_INDEX_V2."
+  },
+  "no_test_asset_included": true,
+  "note": "纠正旧记录“粗/细权重只在<MACHINE>”：coarse/fine已在本机 SCAR_CORE_RELEASES 备份。"
+}

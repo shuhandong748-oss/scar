@@ -1,0 +1,61 @@
+{
+  "schema": "scar-weights-backup-cell-summary/v3",
+  "manifest_version": "ROLE_MANIFEST_V3_20261101",
+  "cell_id": "MP_S3DIS",
+  "method": "MambaPlace",
+  "dataset": "S3DIS",
+  "formal_gate_v2": "BLOCKED_INPUTS",
+  "ab_relation": "A=B 同权重复用",
+  "ab_provenance": "MambaPlace 原头 A=B（ep17）",
+  "b_state": "PRESENT_SHARED_AB",
+  "weights": {
+    "coarse": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_S3DIS/coarse__R059_MP_S3DIS_bb0_coarse_v2_epoch11.pth",
+      "sha256": "9ff33ebc93ef2135e25aecd72cb6b15a19b25a3ad5e3b25912d598b094bf2d2f",
+      "bytes": 128043570,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "11"
+    },
+    "fine": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_S3DIS/fine__R059_MP_S3DIS_bb0_fine_v1_epoch32.pth",
+      "sha256": "97d8f535aad3d889c8c655c393656aaedc6a43ba393888d50a6b89437e2259dd",
+      "bytes": 115742714,
+      "selected_epoch": "",
+      "epoch_hint_from_filename": "32"
+    },
+    "head_A": {
+      "role_status": "PRESENT",
+      "archive_path": "weights/MP_S3DIS/headAB__ht23_cmm_s0.pt",
+      "sha256": "5d4e760b27a6fd04d313c81a9f4c844c862537ae011b1f6641b788e71dac6218",
+      "bytes": 27824,
+      "selected_epoch": "17",
+      "epoch_hint_from_filename": ""
+    },
+    "head_B": {
+      "role_status": "PRESENT_SHARED_AB",
+      "archive_path": "weights/MP_S3DIS/headAB__ht23_cmm_s0.pt",
+      "sha256": "5d4e760b27a6fd04d313c81a9f4c844c862537ae011b1f6641b788e71dac6218",
+      "bytes": 27824,
+      "selected_epoch": "17",
+      "epoch_hint_from_filename": ""
+    }
+  },
+  "architecture_config_status": "MISSING",
+  "architecture_config_evidence": "No architecture hyperparameter record; R059_S3DIS_PROTOCOL.json is provenance/hash only and DATA_STATS.json is normalization only",
+  "normalization": {
+    "manifest_version": "ROLE_MANIFEST_V3_20261101",
+    "cell_id": "MP_S3DIS",
+    "method": "MambaPlace",
+    "norm_mode": "SEPARATE_FILE",
+    "archive_path": "normalization/MP_S3DIS/num_stats_s3dis.json",
+    "source_ref": "TIKTOK/Des4Pos-GC/refine-logs/scar_b_20261029/assets/mp_s3dis/adapt/num_stats_s3dis.json",
+    "source_sha256": "081857b5f52638c774ba035b196e28dac15d98ee88899506e79eb9f342866c59",
+    "archive_sha256": "d48b264f5ae82a06174e7b9e59a55f7a955ddf56ad17af7e9a47ae0ea0570ad3",
+    "status": "CANDIDATE_UNVERIFIED",
+    "note": "V2 records state SEPARATE_CANDIDATE_UNVERIFIED; included as candidate only."
+  },
+  "no_test_asset_included": true,
+  "note": ""
+}

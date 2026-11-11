@@ -1,0 +1,44 @@
+{
+  "package_id": "MNCL-SCAR-HT/NPM3DPose-20-10/bb0/frozen",
+  "method": "MNCL + SCAR(H-T)",
+  "dataset_version": "NPM3DPose-20-10",
+  "backbone_seed": 0,
+  "head_seeds": [
+    0,
+    1,
+    2
+  ],
+  "captured_at": "2026-10-27T15:15:38",
+  "capture_method": "Read-only `python -V` and `pip show torch numpy transformers` on the live machine. `pip show` does not import torch and allocates no GPU.",
+  "origin_machine": "B",
+  "training_environment": {
+    "hostname": "<REMOTE_HOST>-container-<CONTAINER_ID>",
+    "python_executable": "<REMOTE_PATH>",
+    "python_env": "conda mncl",
+    "python": "3.10.22",
+    "packages": {
+      "torch": "2.1.2+cu118",
+      "numpy": "1.26.4",
+      "transformers": "4.40.0"
+    },
+    "torch_build_cuda": "cu118",
+    "status": "CAPTURED"
+  },
+  "recovery_environment": null,
+  "historical_text2pos_environment": {
+    "python_env": "conda t2p",
+    "python": "3.10.22",
+    "packages": {
+      "torch": "1.13.1+cu117",
+      "numpy": "1.26.4",
+      "transformers": "not installed"
+    },
+    "torch_build_cuda": "cu117",
+    "note": "Text2Pos is historical only; no Text2Pos product is packaged."
+  },
+  "notes": [
+    "torch_build_cuda is the wheel build tag, not the driver or GPU model.",
+    "Backup task used no GPU, ran no model and did not touch any training queue.",
+    "See code/BACKUP_ENVIRONMENT/ for git commits, uncommitted diffs and package captures."
+  ]
+}

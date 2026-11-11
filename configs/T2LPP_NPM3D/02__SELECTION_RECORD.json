@@ -1,0 +1,114 @@
+{
+  "package_id": "Text2LocPP-SCAR-HT/NPM3DPose-20-10/bb0/frozen",
+  "created": "2026-10-27",
+  "stages": {
+    "coarse": {
+      "status": "SELECTED",
+      "epoch": 20,
+      "selection": {
+        "selected_epoch": 20
+      },
+      "epoch_source": "registry_selection",
+      "source": "E/text2locpp_npm3d/runs/seed0/frozen/SEED0_FROZEN.json",
+      "checkpoint": "<REMOTE_PATH>",
+      "applicable": true
+    },
+    "fine": {
+      "status": "SELECTED",
+      "epoch": 35,
+      "selection": {
+        "selected_epoch": 35
+      },
+      "epoch_source": "registry_selection",
+      "source": "E/text2locpp_npm3d/runs/seed0/frozen/SEED0_FROZEN.json",
+      "checkpoint": "<REMOTE_PATH>",
+      "applicable": true
+    }
+  },
+  "heads": [
+    {
+      "head_seed": 0,
+      "file": "heads/head_seed0_ht23.pt",
+      "sha256": "3971a3099a48519c1da040b7dc28ef1cbe27ebe00f87d4259b63304452fcb807",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie max top1@5m, earlier epoch",
+        "epoch": 18,
+        "key": [
+          0.2265625,
+          0.1640625
+        ],
+        "val_cell": {
+          "R@1": 0.2265625,
+          "R@2": 0.34375,
+          "R@3": 0.5234375,
+          "R@5": 0.7421875,
+          "R@10": 0.921875,
+          "R@25": 0.984375
+        },
+        "val_loc": {
+          "top1@5m": 0.1640625,
+          "top3@5m": 0.421875,
+          "top5@5m": 0.5625,
+          "top10@5m": 0.7109375
+        }
+      }
+    },
+    {
+      "head_seed": 1,
+      "file": "heads/head_seed1_ht23.pt",
+      "sha256": "9c2a36aef65c8207c68a60829e19341a8a66655401dfb61bcb033979af1c01b3",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie max top1@5m, earlier epoch",
+        "epoch": 4,
+        "key": [
+          0.203125,
+          0.1328125
+        ],
+        "val_cell": {
+          "R@1": 0.203125,
+          "R@2": 0.390625,
+          "R@3": 0.4765625,
+          "R@5": 0.7109375,
+          "R@10": 0.90625,
+          "R@25": 0.984375
+        },
+        "val_loc": {
+          "top1@5m": 0.1328125,
+          "top3@5m": 0.34375,
+          "top5@5m": 0.5234375,
+          "top10@5m": 0.6875
+        }
+      }
+    },
+    {
+      "head_seed": 2,
+      "file": "heads/head_seed2_ht23.pt",
+      "sha256": "37aede1481428b48605907ce27158042da5ba0bac27f1c2b7b93b4db706caa6d",
+      "selection_epoch": null,
+      "selection": {
+        "rule": "max VAL cell R@1, tie max top1@5m, earlier epoch",
+        "epoch": 5,
+        "key": [
+          0.21875,
+          0.140625
+        ],
+        "val_cell": {
+          "R@1": 0.21875,
+          "R@2": 0.359375,
+          "R@3": 0.515625,
+          "R@5": 0.734375,
+          "R@10": 0.90625,
+          "R@25": 0.984375
+        },
+        "val_loc": {
+          "top1@5m": 0.140625,
+          "top3@5m": 0.359375,
+          "top5@5m": 0.5546875,
+          "top10@5m": 0.6953125
+        }
+      }
+    }
+  ]
+}
